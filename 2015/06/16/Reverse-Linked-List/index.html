@@ -3,24 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Swap Nodes in pairs | 忠奸人</title>
+  <title>Reverse Linked List | 忠奸人</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Swap Nodes in pairs题目Given a linked list, swap every two adjacent nodes and return its head.
-For example,Given 1-&amp;gt;2-&amp;gt;3-&amp;gt;4, you should return the list as 2-&amp;gt;1-&amp;gt;4-&amp;gt;3.
-Your algorithm sh">
+  <meta name="description" content="Reverse Linked List题目Reverse a singly linked list.
+Hint:
+A linked list can be reversed either iteratively or recursively. Could you implement both?
+思路头插法 cur和pre分别表示当前结点和当前结点的前一结点，dummy.next=head;按照如下">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Swap Nodes in pairs">
-<meta property="og:url" content="http://yoursite.com/2015/06/16/Swap-Nodes-in-pairs/index.html">
+<meta property="og:title" content="Reverse Linked List">
+<meta property="og:url" content="http://yoursite.com/2015/06/16/Reverse-Linked-List/index.html">
 <meta property="og:site_name" content="忠奸人">
-<meta property="og:description" content="Swap Nodes in pairs题目Given a linked list, swap every two adjacent nodes and return its head.
-For example,Given 1-&amp;gt;2-&amp;gt;3-&amp;gt;4, you should return the list as 2-&amp;gt;1-&amp;gt;4-&amp;gt;3.
-Your algorithm sh">
-<meta property="og:updated_time" content="2015-06-16T08:32:51.571Z">
+<meta property="og:description" content="Reverse Linked List题目Reverse a singly linked list.
+Hint:
+A linked list can be reversed either iteratively or recursively. Could you implement both?
+思路头插法 cur和pre分别表示当前结点和当前结点的前一结点，dummy.next=head;按照如下">
+<meta property="og:updated_time" content="2015-06-16T09:22:33.709Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swap Nodes in pairs">
-<meta name="twitter:description" content="Swap Nodes in pairs题目Given a linked list, swap every two adjacent nodes and return its head.
-For example,Given 1-&amp;gt;2-&amp;gt;3-&amp;gt;4, you should return the list as 2-&amp;gt;1-&amp;gt;4-&amp;gt;3.
-Your algorithm sh">
+<meta name="twitter:title" content="Reverse Linked List">
+<meta name="twitter:description" content="Reverse Linked List题目Reverse a singly linked list.
+Hint:
+A linked list can be reversed either iteratively or recursively. Could you implement both?
+思路头插法 cur和pre分别表示当前结点和当前结点的前一结点，dummy.next=head;按照如下">
   
     <link rel="alternative" href="/atom.xml" title="忠奸人" type="application/atom+xml">
   
@@ -66,10 +69,10 @@ Your algorithm sh">
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Swap-Nodes-in-pairs" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Reverse-Linked-List" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/06/16/Swap-Nodes-in-pairs/" class="article-date">
-  <time datetime="2015-06-16T08:18:57.000Z" itemprop="datePublished">2015-06-16</time>
+    <a href="/2015/06/16/Reverse-Linked-List/" class="article-date">
+  <time datetime="2015-06-16T08:42:53.000Z" itemprop="datePublished">2015-06-16</time>
 </a>
     
   <div class="article-category">
@@ -84,7 +87,7 @@ Your algorithm sh">
         
   
     <h1 class="article-title" itemprop="name">
-      Swap Nodes in pairs
+      Reverse Linked List
     </h1>
   
 
@@ -92,17 +95,15 @@ Your algorithm sh">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Swap_Nodes_in_pairs">Swap Nodes in pairs</h2><h3 id="题目">题目</h3><p>Given a linked list, swap every two adjacent nodes and return its head.</p>
-<p>For example,<br>Given 1-&gt;2-&gt;3-&gt;4, you should return the list as 2-&gt;1-&gt;4-&gt;3.</p>
-<p>Your algorithm should use only constant space. You may not modify the values in the list, only nodes itself can be changed. </p>
-<h3 id="思路">思路</h3><p>cur和cur-&gt;next 分别表示需要交换的两个节点，pre表示交换的第一个节点的前一个节点。经过下述操作，就能达到交换的目的。顺序很重要。</p>
+        <h2 id="Reverse_Linked_List">Reverse Linked List</h2><h3 id="题目">题目</h3><p>Reverse a singly linked list.</p>
+<p><strong>Hint:</strong></p>
+<p>A linked list can be reversed either iteratively or recursively. Could you implement both?</p>
+<h3 id="思路">思路</h3><p>头插法 cur和pre分别表示当前结点和当前结点的前一结点，dummy.next=head;按照如下操作，不断将当前结点插入到头结点处。</p>
 <pre><code>pre-&gt;<span class="keyword">next</span>=cur-&gt;<span class="keyword">next</span>;
-cur-&gt;<span class="keyword">next</span>=cur-&gt;<span class="keyword">next</span>-&gt;<span class="keyword">next</span>;
-pre-&gt;<span class="keyword">next</span>-&gt;<span class="keyword">next</span>=cur;
-</code></pre><p>然后移动操作。</p>
-<pre><code>pre=cur<span class="comment">;</span>
-cur=cur-&gt;next<span class="comment">;</span>
-</code></pre><h3 id="解题">解题</h3><p>c++版</p>
+cur-&gt;<span class="keyword">next</span>=dummy-&gt;<span class="keyword">next</span>;
+dummy-&gt;<span class="keyword">next</span>=cur;
+cur=pre-&gt;<span class="keyword">next</span>;
+</code></pre><h3 id="解题">解题</h3><p>C++版</p>
 <pre><code>/**
  * Definition <span class="keyword">for</span> singly-linked list.
  * struct ListNode {
@@ -113,25 +114,24 @@ cur=cur-&gt;next<span class="comment">;</span>
  */
 <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
 <span class="keyword">public</span>:
-    ListNode* swapPairs(ListNode* head) {
-        <span class="keyword">if</span>(!head)
-            <span class="keyword">return</span> <span class="literal">NULL</span>;
+    ListNode* reverseList(ListNode* head) {
         ListNode dummy(-<span class="number">1</span>);
         dummy.<span class="keyword">next</span>=head;
         ListNode *pre,*cur;
-        pre=&amp;dummy;
-        cur=head;
-        <span class="keyword">while</span>(cur <span class="literal">and</span> cur-&gt;<span class="keyword">next</span>){
+        <span class="keyword">if</span>(!head)
+            <span class="keyword">return</span> <span class="literal">NULL</span>;
+        pre=head;
+        cur=head-&gt;<span class="keyword">next</span>;
+        <span class="keyword">while</span>(cur){
             pre-&gt;<span class="keyword">next</span>=cur-&gt;<span class="keyword">next</span>;
-            cur-&gt;<span class="keyword">next</span>=cur-&gt;<span class="keyword">next</span>-&gt;<span class="keyword">next</span>;
-            pre-&gt;<span class="keyword">next</span>-&gt;<span class="keyword">next</span>=cur;
-            pre=cur;
-            cur=cur-&gt;<span class="keyword">next</span>;
+            cur-&gt;<span class="keyword">next</span>=dummy.<span class="keyword">next</span>;
+            dummy.<span class="keyword">next</span>=cur;
+            cur=pre-&gt;<span class="keyword">next</span>;
         }
         <span class="keyword">return</span> dummy.<span class="keyword">next</span>;
     }
 };
-</code></pre><p>Python版</p>
+</code></pre><p>Python 版</p>
 <pre><code><span class="comment"># Definition for singly-linked list.</span>
 <span class="comment"># class ListNode:</span>
 <span class="comment">#     def __init__(self, x):</span>
@@ -139,25 +139,48 @@ cur=cur-&gt;next<span class="comment">;</span>
 <span class="comment">#         self.next = None</span>
 
 <span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span>
-    <span class="comment"># <span class="doctag">@param</span> a ListNode</span>
-    <span class="comment"># <span class="doctag">@return</span> a ListNode</span>
-    <span class="function"><span class="keyword">def</span> </span>swapPairs(<span class="keyword">self</span>, head)<span class="symbol">:</span>
-        dummy=<span class="constant">ListNode</span>(-<span class="number">1</span>)
+    <span class="comment"># <span class="doctag">@param</span> {ListNode} head</span>
+    <span class="comment"># <span class="doctag">@return</span> {ListNode}</span>
+    <span class="function"><span class="keyword">def</span> </span>reverseList(<span class="keyword">self</span>, head)<span class="symbol">:</span>
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="symbol">head:</span>
+            <span class="keyword">return</span> <span class="constant">None</span>
+        dummy=<span class="constant">ListNode</span>(<span class="number">0</span>)
         dummy.<span class="keyword">next</span>=head
-        pre=dummy
+        pre=head
         cur=pre.<span class="keyword">next</span>
-        <span class="keyword">while</span> cur <span class="keyword">and</span> cur.<span class="symbol">next:</span>
+        <span class="keyword">while</span>(cur)<span class="symbol">:</span>
             pre.<span class="keyword">next</span>=cur.<span class="keyword">next</span>
-            cur.<span class="keyword">next</span>=pre.<span class="keyword">next</span>.<span class="keyword">next</span>
-            pre.<span class="keyword">next</span>.<span class="keyword">next</span>=cur
-            pre=cur
-            cur=cur.<span class="keyword">next</span>
+            cur.<span class="keyword">next</span>=dummy.<span class="keyword">next</span>
+            dummy.<span class="keyword">next</span>=cur
+            cur=pre.<span class="keyword">next</span>
         <span class="keyword">return</span> dummy.<span class="keyword">next</span>
-</code></pre>
+</code></pre><p>递归版</p>
+<pre><code>/**
+ * Definition <span class="keyword">for</span> singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *<span class="keyword">next</span>;
+ *     ListNode(int x) : val(x), <span class="keyword">next</span>(<span class="literal">NULL</span>) {}
+ * };
+ */
+<span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+<span class="keyword">public</span>:
+    ListNode* reverseList(ListNode* head) {
+        <span class="keyword">if</span>(!head)
+            <span class="keyword">return</span> <span class="literal">NULL</span>;
+        <span class="keyword">if</span>(!head-&gt;<span class="keyword">next</span>)
+            <span class="keyword">return</span> head;
+        ListNode *newHead=reverseList(head-&gt;<span class="keyword">next</span>);
+        head-&gt;<span class="keyword">next</span>-&gt;<span class="keyword">next</span>=head;
+        head-&gt;<span class="keyword">next</span>=<span class="literal">NULL</span>;
+        <span class="keyword">return</span> newHead;
+    }
+</code></pre><p>};</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/16/Swap-Nodes-in-pairs/" data-id="ciaz4g8520004v4oy2ti469d3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/16/Reverse-Linked-List/" data-id="ciaz4g8560006v4oyos44eqv0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -166,19 +189,10 @@ cur=cur-&gt;next<span class="comment">;</span>
     
 <nav id="article-nav">
   
-    <a href="/2015/06/16/Reverse-Linked-List/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Reverse Linked List
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/06/16/Merge-Two-Sorted-Lists/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2015/06/16/Swap-Nodes-in-pairs/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Merge Two Sorted Lists</div>
+      <div class="article-nav-title">Swap Nodes in pairs</div>
     </a>
   
 </nav>
@@ -189,7 +203,7 @@ cur=cur-&gt;next<span class="comment">;</span>
  
   <section id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="post-Swap-Nodes-in-pairs" data-title="Swap Nodes in pairs" data-url="http://yoursite.com/2015/06/16/Swap-Nodes-in-pairs/"></div>
+    <div class="ds-thread" data-thread-key="post-Reverse-Linked-List" data-title="Reverse Linked List" data-url="http://yoursite.com/2015/06/16/Reverse-Linked-List/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
