@@ -61,6 +61,106 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Remove-Nth-Node-From-End-of-List" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/16/Remove-Nth-Node-From-End-of-List/" class="article-date">
+  <time datetime="2015-06-16T05:54:03.000Z" itemprop="datePublished">2015-06-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/16/Remove-Nth-Node-From-End-of-List/">Remove Nth Node From End of List</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Remove_Nth_Node_From_End_of_List">Remove Nth Node From End of List</h2><h3 id="题目">题目</h3><p>Given a linked list, remove the nth node from the end of list and return its head.</p>
+<p>For example,</p>
+<pre><code><span class="type">Given</span> linked <span class="built_in">list</span>: <span class="number">1</span>-&gt;<span class="number">2</span>-&gt;<span class="number">3</span>-&gt;<span class="number">4</span>-&gt;<span class="number">5</span>, <span class="keyword">and</span> n = <span class="number">2.</span>
+
+<span class="type">After</span> removing the second node from the <span class="keyword">end</span>, the linked <span class="built_in">list</span> becomes <span class="number">1</span>-&gt;<span class="number">2</span>-&gt;<span class="number">3</span>-&gt;<span class="number">5.</span>
+</code></pre><p><strong>Note:</strong></p>
+<p>Given n will always be valid.</p>
+<p>Try to do this in one pass. </p>
+<h3 id="思路">思路</h3><p>主要是要将指针指到链表从末尾向前数的第n+1个结点P，知道P结点，就能通过P-&gt;next=p-&gt;next-&gt;next。不过要注意一种特定情形，删除的节点刚好是首结点。可以通过定义头结点来解决。通过两个指针来解决，一个指针先行n+1步，然后再两个指针同时移步。</p>
+<h3 id="解题">解题</h3><p>c++版</p>
+<pre><code>/**
+ * Definition <span class="keyword">for</span> singly-linked list.
+ * struct ListNode {
+ *     <span class="built_in">int</span> val;
+ *     ListNode *<span class="keyword">next</span>;
+ *     ListNode(<span class="built_in">int</span> x) : val(x), <span class="keyword">next</span>(<span class="literal">NULL</span>) {}
+ * };
+ */
+<span class="keyword">class</span> Solution {
+<span class="keyword">public</span>:
+    ListNode* removeNthFromEnd(ListNode* head, <span class="built_in">int</span> n) {
+        ListNode dummy(-<span class="number">1</span>);
+        dummy.<span class="keyword">next</span>=head;
+        ListNode *p,*q;
+        p=&amp;dummy;
+        q=&amp;dummy;
+        <span class="keyword">while</span>(n--)
+            p=p-&gt;<span class="keyword">next</span>;
+        p=p-&gt;<span class="keyword">next</span>;
+        <span class="keyword">while</span>(p <span class="keyword">and</span> q){
+            p=p-&gt;<span class="keyword">next</span>;
+            q=q-&gt;<span class="keyword">next</span>;
+        }
+        q-&gt;<span class="keyword">next</span>=q-&gt;<span class="keyword">next</span>-&gt;<span class="keyword">next</span>;
+        return dummy.<span class="keyword">next</span>;
+    }
+};
+</code></pre><p>python版</p>
+<pre><code><span class="comment"># Definition for singly-linked list.</span>
+<span class="comment"># class ListNode:</span>
+<span class="comment">#     def __init__(self, x):</span>
+<span class="comment">#         self.val = x</span>
+<span class="comment">#         self.next = None</span>
+
+<span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span>
+    <span class="comment"># <span class="doctag">@param</span> {ListNode} head</span>
+    <span class="comment"># <span class="doctag">@param</span> {integer} n</span>
+    <span class="comment"># <span class="doctag">@return</span> {ListNode}</span>
+    <span class="function"><span class="keyword">def</span> </span>removeNthFromEnd(<span class="keyword">self</span>, head, n)<span class="symbol">:</span>
+        dummy=<span class="constant">ListNode</span>(<span class="number">0</span>)
+        dummy.<span class="keyword">next</span>=head
+        p=dummy
+        q=dummy
+        <span class="keyword">for</span> i <span class="keyword">in</span> range(n+<span class="number">1</span>)<span class="symbol">:</span>
+            p=p.<span class="keyword">next</span>
+        <span class="keyword">while</span>(p <span class="keyword">and</span> q)<span class="symbol">:</span>
+            p=p.<span class="keyword">next</span>
+            q=q.<span class="keyword">next</span>
+        q.<span class="keyword">next</span>=q.<span class="keyword">next</span>.<span class="keyword">next</span>
+        <span class="keyword">return</span> dummy.<span class="keyword">next</span>
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/06/16/Remove-Nth-Node-From-End-of-List/" data-id="ciayy68560004ewoy089ejjet" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Add-Two-Numbers" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/06/16/Add-Two-Numbers/" class="article-date">
@@ -169,7 +269,7 @@ class Solution {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/16/Add-Two-Numbers/" data-id="ciayt9umu0000scoyksh16l16" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/16/Add-Two-Numbers/" data-id="ciayy67tz0000ewoy4stekkd6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -205,7 +305,7 @@ class Solution {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/15/我开通博客啦/" data-id="ciayt9uos0003scoyd0dpzqhh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/15/我开通博客啦/" data-id="ciayy684v0003ewoy6yd2z9wg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -224,7 +324,7 @@ class Solution {
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -237,7 +337,7 @@ class Solution {
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -247,6 +347,10 @@ class Solution {
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/06/16/Remove-Nth-Node-From-End-of-List/">Remove Nth Node From End of List</a>
+          </li>
         
           <li>
             <a href="/2015/06/16/Add-Two-Numbers/">Add Two Numbers</a>
