@@ -90,8 +90,14 @@
         <h2 id="Swap_Nodes_in_pairs">Swap Nodes in pairs</h2><h3 id="题目">题目</h3><p>Given a linked list, swap every two adjacent nodes and return its head.</p>
 <p>For example,<br>Given 1-&gt;2-&gt;3-&gt;4, you should return the list as 2-&gt;1-&gt;4-&gt;3.</p>
 <p>Your algorithm should use only constant space. You may not modify the values in the list, only nodes itself can be changed. </p>
-<h3 id="思路">思路</h3><p>cur和cur-&gt;next 分别表示需要交换的两个节点，pre表示交换的第一个节点的前一个节点。经过下述操作，就能达到交换的目的。顺序很重要。<br>    pre-&gt;next=cur-&gt;next;<br>    cur-&gt;next=cur-&gt;next-&gt;next;<br>    pre-&gt;next-&gt;next=cur;<br>然后移动操作。<br>    pre=cur;<br>    cur=cur-&gt;next;</p>
-<h3 id="解题">解题</h3><p>c++版</p>
+<h3 id="思路">思路</h3><p>cur和cur-&gt;next 分别表示需要交换的两个节点，pre表示交换的第一个节点的前一个节点。经过下述操作，就能达到交换的目的。顺序很重要。</p>
+<pre><code>pre-&gt;<span class="keyword">next</span>=cur-&gt;<span class="keyword">next</span>;
+cur-&gt;<span class="keyword">next</span>=cur-&gt;<span class="keyword">next</span>-&gt;<span class="keyword">next</span>;
+pre-&gt;<span class="keyword">next</span>-&gt;<span class="keyword">next</span>=cur;
+</code></pre><p>然后移动操作。</p>
+<pre><code>pre=cur<span class="comment">;</span>
+cur=cur-&gt;next<span class="comment">;</span>
+</code></pre><h3 id="解题">解题</h3><p>c++版</p>
 <pre><code>/**
  * Definition <span class="keyword">for</span> singly-linked list.
  * struct ListNode {
@@ -146,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/16/Swap-Nodes-in-pairs/" data-id="ciaz2mdku0004u0oylj44in0v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/16/Swap-Nodes-in-pairs/" data-id="ciaz2o6v9000460oy2pl7t3ss" class="article-share-link">Share</a>
       
       
     </footer>
@@ -247,7 +253,7 @@ public:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/16/Merge-Two-Sorted-Lists/" data-id="ciaz2mdl30008u0oyo3bduzg6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/16/Merge-Two-Sorted-Lists/" data-id="ciaz2o6vj000860oy26tvlomv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -347,7 +353,7 @@ public:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/16/Remove-Nth-Node-From-End-of-List/" data-id="ciaz2mdky0006u0oyr0jme299" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/16/Remove-Nth-Node-From-End-of-List/" data-id="ciaz2o6vf000660oy6mwph8ux" class="article-share-link">Share</a>
       
       
     </footer>
@@ -465,7 +471,7 @@ class Solution {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/16/Add-Two-Numbers/" data-id="ciaz2mdjj0000u0oyi1lkvjv2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/16/Add-Two-Numbers/" data-id="ciaz2o6tg000060oy4dizun3m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -501,7 +507,7 @@ class Solution {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/15/我开通博客啦/" data-id="ciaz2mdkq0003u0oy7xtw26f5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/15/我开通博客啦/" data-id="ciaz2o6uq000360oyzpizbtqt" class="article-share-link">Share</a>
       
       
     </footer>
