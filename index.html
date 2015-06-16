@@ -61,6 +61,101 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Swap-Nodes-in-pairs" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/16/Swap-Nodes-in-pairs/" class="article-date">
+  <time datetime="2015-06-16T08:18:57.000Z" itemprop="datePublished">2015-06-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/16/Swap-Nodes-in-pairs/">Swap Nodes in pairs</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Swap_Nodes_in_pairs">Swap Nodes in pairs</h2><h3 id="题目">题目</h3><p>Given a linked list, swap every two adjacent nodes and return its head.</p>
+<p>For example,<br>Given 1-&gt;2-&gt;3-&gt;4, you should return the list as 2-&gt;1-&gt;4-&gt;3.</p>
+<p>Your algorithm should use only constant space. You may not modify the values in the list, only nodes itself can be changed. </p>
+<h3 id="思路">思路</h3><p>cur和cur-&gt;next 分别表示需要交换的两个节点，pre表示交换的第一个节点的前一个节点。经过下述操作，就能达到交换的目的。顺序很重要。<br>    pre-&gt;next=cur-&gt;next;<br>    cur-&gt;next=cur-&gt;next-&gt;next;<br>    pre-&gt;next-&gt;next=cur;<br>然后移动操作。<br>    pre=cur;<br>    cur=cur-&gt;next;</p>
+<h3 id="解题">解题</h3><p>c++版</p>
+<pre><code>/**
+ * Definition <span class="keyword">for</span> singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *<span class="keyword">next</span>;
+ *     ListNode(int x) : val(x), <span class="keyword">next</span>(<span class="literal">NULL</span>) {}
+ * };
+ */
+<span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+<span class="keyword">public</span>:
+    ListNode* swapPairs(ListNode* head) {
+        <span class="keyword">if</span>(!head)
+            <span class="keyword">return</span> <span class="literal">NULL</span>;
+        ListNode dummy(-<span class="number">1</span>);
+        dummy.<span class="keyword">next</span>=head;
+        ListNode *pre,*cur;
+        pre=&amp;dummy;
+        cur=head;
+        <span class="keyword">while</span>(cur <span class="literal">and</span> cur-&gt;<span class="keyword">next</span>){
+            pre-&gt;<span class="keyword">next</span>=cur-&gt;<span class="keyword">next</span>;
+            cur-&gt;<span class="keyword">next</span>=cur-&gt;<span class="keyword">next</span>-&gt;<span class="keyword">next</span>;
+            pre-&gt;<span class="keyword">next</span>-&gt;<span class="keyword">next</span>=cur;
+            pre=cur;
+            cur=cur-&gt;<span class="keyword">next</span>;
+        }
+        <span class="keyword">return</span> dummy.<span class="keyword">next</span>;
+    }
+};
+</code></pre><p>Python版</p>
+<pre><code><span class="comment"># Definition for singly-linked list.</span>
+<span class="comment"># class ListNode:</span>
+<span class="comment">#     def __init__(self, x):</span>
+<span class="comment">#         self.val = x</span>
+<span class="comment">#         self.next = None</span>
+
+<span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span>
+    <span class="comment"># <span class="doctag">@param</span> a ListNode</span>
+    <span class="comment"># <span class="doctag">@return</span> a ListNode</span>
+    <span class="function"><span class="keyword">def</span> </span>swapPairs(<span class="keyword">self</span>, head)<span class="symbol">:</span>
+        dummy=<span class="constant">ListNode</span>(-<span class="number">1</span>)
+        dummy.<span class="keyword">next</span>=head
+        pre=dummy
+        cur=pre.<span class="keyword">next</span>
+        <span class="keyword">while</span> cur <span class="keyword">and</span> cur.<span class="symbol">next:</span>
+            pre.<span class="keyword">next</span>=cur.<span class="keyword">next</span>
+            cur.<span class="keyword">next</span>=pre.<span class="keyword">next</span>.<span class="keyword">next</span>
+            pre.<span class="keyword">next</span>.<span class="keyword">next</span>=cur
+            pre=cur
+            cur=cur.<span class="keyword">next</span>
+        <span class="keyword">return</span> dummy.<span class="keyword">next</span>
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/06/16/Swap-Nodes-in-pairs/" data-id="ciaz2mdku0004u0oylj44in0v" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+ 
+  
     <article id="post-Merge-Two-Sorted-Lists" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/06/16/Merge-Two-Sorted-Lists/" class="article-date">
@@ -152,7 +247,7 @@ public:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/16/Merge-Two-Sorted-Lists/" data-id="ciaz1h47z0006uooy1oe6ilex" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/16/Merge-Two-Sorted-Lists/" data-id="ciaz2mdl30008u0oyo3bduzg6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -252,7 +347,7 @@ public:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/16/Remove-Nth-Node-From-End-of-List/" data-id="ciaz1h47s0004uooy32th9ujs" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/16/Remove-Nth-Node-From-End-of-List/" data-id="ciaz2mdky0006u0oyr0jme299" class="article-share-link">Share</a>
       
       
     </footer>
@@ -370,7 +465,7 @@ class Solution {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/16/Add-Two-Numbers/" data-id="ciaz1h3wd0000uooytj6ojtk4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/16/Add-Two-Numbers/" data-id="ciaz2mdjj0000u0oyi1lkvjv2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -406,7 +501,7 @@ class Solution {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/15/我开通博客啦/" data-id="ciaz1h47c0003uooy3d5r31as" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/15/我开通博客啦/" data-id="ciaz2mdkq0003u0oy7xtw26f5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -425,7 +520,7 @@ class Solution {
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -438,7 +533,7 @@ class Solution {
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -448,6 +543,10 @@ class Solution {
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/06/16/Swap-Nodes-in-pairs/">Swap Nodes in pairs</a>
+          </li>
         
           <li>
             <a href="/2015/06/16/Merge-Two-Sorted-Lists/">Merge Two Sorted Lists</a>
