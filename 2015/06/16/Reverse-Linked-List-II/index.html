@@ -3,30 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Remove Nth Node From End of List | 忠奸人</title>
+  <title>Reverse Linked List II | 忠奸人</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Remove Nth Node From End of List题目Given a linked list, remove the nth node from the end of list and return its head.
-For example,
-Given linked list: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5, and n = 2.
-
-After removi">
+  <meta name="description" content="Reverse Linked List II题目Reverse a linked list from position m to n. Do it in-place and in one-pass.
+For example:Given 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULL, m = 2 and n = 4,
+return 1-&amp;gt;4-&amp;gt;3-&amp;gt;2-&amp;g">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Remove Nth Node From End of List">
-<meta property="og:url" content="http://yoursite.com/2015/06/16/Remove-Nth-Node-From-End-of-List/index.html">
+<meta property="og:title" content="Reverse Linked List II">
+<meta property="og:url" content="http://yoursite.com/2015/06/16/Reverse-Linked-List-II/index.html">
 <meta property="og:site_name" content="忠奸人">
-<meta property="og:description" content="Remove Nth Node From End of List题目Given a linked list, remove the nth node from the end of list and return its head.
-For example,
-Given linked list: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5, and n = 2.
-
-After removi">
-<meta property="og:updated_time" content="2015-06-16T06:26:22.740Z">
+<meta property="og:description" content="Reverse Linked List II题目Reverse a linked list from position m to n. Do it in-place and in one-pass.
+For example:Given 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULL, m = 2 and n = 4,
+return 1-&amp;gt;4-&amp;gt;3-&amp;gt;2-&amp;g">
+<meta property="og:updated_time" content="2015-06-16T09:43:52.062Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Remove Nth Node From End of List">
-<meta name="twitter:description" content="Remove Nth Node From End of List题目Given a linked list, remove the nth node from the end of list and return its head.
-For example,
-Given linked list: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5, and n = 2.
-
-After removi">
+<meta name="twitter:title" content="Reverse Linked List II">
+<meta name="twitter:description" content="Reverse Linked List II题目Reverse a linked list from position m to n. Do it in-place and in one-pass.
+For example:Given 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULL, m = 2 and n = 4,
+return 1-&amp;gt;4-&amp;gt;3-&amp;gt;2-&amp;g">
   
     <link rel="alternative" href="/atom.xml" title="忠奸人" type="application/atom+xml">
   
@@ -72,10 +66,10 @@ After removi">
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Remove-Nth-Node-From-End-of-List" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Reverse-Linked-List-II" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/06/16/Remove-Nth-Node-From-End-of-List/" class="article-date">
-  <time datetime="2015-06-16T05:54:03.000Z" itemprop="datePublished">2015-06-16</time>
+    <a href="/2015/06/16/Reverse-Linked-List-II/" class="article-date">
+  <time datetime="2015-06-16T09:28:59.000Z" itemprop="datePublished">2015-06-16</time>
 </a>
     
   <div class="article-category">
@@ -90,7 +84,7 @@ After removi">
         
   
     <h1 class="article-title" itemprop="name">
-      Remove Nth Node From End of List
+      Reverse Linked List II
     </h1>
   
 
@@ -98,15 +92,12 @@ After removi">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Remove_Nth_Node_From_End_of_List">Remove Nth Node From End of List</h2><h3 id="题目">题目</h3><p>Given a linked list, remove the nth node from the end of list and return its head.</p>
-<p>For example,</p>
-<pre><code><span class="type">Given</span> linked <span class="built_in">list</span>: <span class="number">1</span>-&gt;<span class="number">2</span>-&gt;<span class="number">3</span>-&gt;<span class="number">4</span>-&gt;<span class="number">5</span>, <span class="keyword">and</span> n = <span class="number">2.</span>
-
-<span class="type">After</span> removing the second node from the <span class="keyword">end</span>, the linked <span class="built_in">list</span> becomes <span class="number">1</span>-&gt;<span class="number">2</span>-&gt;<span class="number">3</span>-&gt;<span class="number">5.</span>
-</code></pre><p><strong>Note:</strong></p>
-<p>Given n will always be valid.</p>
-<p>Try to do this in one pass. </p>
-<h3 id="思路">思路</h3><p>主要是要将指针指到链表从末尾向前数的第n+1个结点P，知道P结点，就能通过P-&gt;next=p-&gt;next-&gt;next。不过要注意一种特定情形，删除的节点刚好是首结点。可以通过定义头结点来解决。通过两个指针来解决，一个指针先行n+1步，然后再两个指针同时移步。</p>
+        <h2 id="Reverse_Linked_List_II">Reverse Linked List II</h2><h3 id="题目">题目</h3><p>Reverse a linked list from position m to n. Do it in-place and in one-pass.</p>
+<p>For example:<br>Given 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, m = 2 and n = 4,</p>
+<p>return 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL.</p>
+<p><strong>Note:</strong></p>
+<p>Given m, n satisfy the following condition:<br>1 ≤ m ≤ n ≤ length of list. </p>
+<h3 id="思路">思路</h3><p>其实跟反转链表的思路是一样的，都采用头插法，只不过这里的头需要重新定义，还有插入次数的的限定n-m。</p>
 <h3 id="解题">解题</h3><p>c++版</p>
 <pre><code>/**
  * Definition <span class="keyword">for</span> singly-linked list.
@@ -118,24 +109,27 @@ After removi">
  */
 <span class="keyword">class</span> Solution {
 <span class="keyword">public</span>:
-    ListNode* removeNthFromEnd(ListNode* head, <span class="built_in">int</span> n) {
+    ListNode* reverseBetween(ListNode* head, <span class="built_in">int</span> m, <span class="built_in">int</span> n) {
+        <span class="built_in">int</span> i;
         ListNode dummy(-<span class="number">1</span>);
         dummy.<span class="keyword">next</span>=head;
-        ListNode *p,*q;
-        p=&amp;dummy;
-        q=&amp;dummy;
-        <span class="keyword">while</span>(n--)
-            p=p-&gt;<span class="keyword">next</span>;
-        p=p-&gt;<span class="keyword">next</span>;
-        <span class="keyword">while</span>(p <span class="keyword">and</span> q){
-            p=p-&gt;<span class="keyword">next</span>;
-            q=q-&gt;<span class="keyword">next</span>;
+        ListNode *dummy1=&amp;dummy;
+        <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;m;i++){
+            dummy1=dummy1-&gt;<span class="keyword">next</span>;
         }
-        q-&gt;<span class="keyword">next</span>=q-&gt;<span class="keyword">next</span>-&gt;<span class="keyword">next</span>;
+        ListNode *pre,*cur;
+        pre=dummy1-&gt;<span class="keyword">next</span>;
+        cur=pre-&gt;<span class="keyword">next</span>;
+        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n-m;i++){
+            pre-&gt;<span class="keyword">next</span>=cur-&gt;<span class="keyword">next</span>;
+            cur-&gt;<span class="keyword">next</span>=dummy1-&gt;<span class="keyword">next</span>;
+            dummy1-&gt;<span class="keyword">next</span>=cur;
+            cur=pre-&gt;<span class="keyword">next</span>;
+        }
         return dummy.<span class="keyword">next</span>;
     }
 };
-</code></pre><p>python版</p>
+</code></pre><p>Python版</p>
 <pre><code><span class="comment"># Definition for singly-linked list.</span>
 <span class="comment"># class ListNode:</span>
 <span class="comment">#     def __init__(self, x):</span>
@@ -143,26 +137,30 @@ After removi">
 <span class="comment">#         self.next = None</span>
 
 <span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span>
-    <span class="comment"># <span class="doctag">@param</span> {ListNode} head</span>
-    <span class="comment"># <span class="doctag">@param</span> {integer} n</span>
-    <span class="comment"># <span class="doctag">@return</span> {ListNode}</span>
-    <span class="function"><span class="keyword">def</span> </span>removeNthFromEnd(<span class="keyword">self</span>, head, n)<span class="symbol">:</span>
-        dummy=<span class="constant">ListNode</span>(<span class="number">0</span>)
+    <span class="comment"># <span class="doctag">@param</span> head, a ListNode</span>
+    <span class="comment"># <span class="doctag">@param</span> m, an integer</span>
+    <span class="comment"># <span class="doctag">@param</span> n, an integer</span>
+    <span class="comment"># <span class="doctag">@return</span> a ListNode</span>
+    <span class="function"><span class="keyword">def</span> </span>reverseBetween(<span class="keyword">self</span>, head, m, n)<span class="symbol">:</span>
+        dummy=<span class="constant">ListNode</span>(-<span class="number">1</span>)
         dummy.<span class="keyword">next</span>=head
-        p=dummy
-        q=dummy
-        <span class="keyword">for</span> i <span class="keyword">in</span> range(n+<span class="number">1</span>)<span class="symbol">:</span>
-            p=p.<span class="keyword">next</span>
-        <span class="keyword">while</span>(p <span class="keyword">and</span> q)<span class="symbol">:</span>
-            p=p.<span class="keyword">next</span>
-            q=q.<span class="keyword">next</span>
-        q.<span class="keyword">next</span>=q.<span class="keyword">next</span>.<span class="keyword">next</span>
+        prev=dummy
+        <span class="keyword">for</span> i <span class="keyword">in</span> range(m-<span class="number">1</span>)<span class="symbol">:</span>
+            prev=prev.<span class="keyword">next</span>
+        head2=prev
+        prev=head2.<span class="keyword">next</span>
+        cur=prev.<span class="keyword">next</span>
+        <span class="keyword">for</span> i <span class="keyword">in</span> range(n-m)<span class="symbol">:</span>
+            prev.<span class="keyword">next</span>=cur.<span class="keyword">next</span>
+            cur.<span class="keyword">next</span>=head2.<span class="keyword">next</span>
+            head2.<span class="keyword">next</span>=cur
+            cur=prev.<span class="keyword">next</span>
         <span class="keyword">return</span> dummy.<span class="keyword">next</span>
 </code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/16/Remove-Nth-Node-From-End-of-List/" data-id="ciaz57t3t000acwoy4yz1fmxa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/16/Reverse-Linked-List-II/" data-id="ciaz57t3o0008cwoymf0hc6ux" class="article-share-link">Share</a>
       
       
     </footer>
@@ -171,19 +169,10 @@ After removi">
     
 <nav id="article-nav">
   
-    <a href="/2015/06/16/Merge-Two-Sorted-Lists/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Merge Two Sorted Lists
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/06/16/Add-Two-Numbers/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2015/06/16/Reverse-Linked-List/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Add Two Numbers</div>
+      <div class="article-nav-title">Reverse Linked List</div>
     </a>
   
 </nav>

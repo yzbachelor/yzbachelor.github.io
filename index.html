@@ -61,6 +61,110 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Reverse-Linked-List-II" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/16/Reverse-Linked-List-II/" class="article-date">
+  <time datetime="2015-06-16T09:28:59.000Z" itemprop="datePublished">2015-06-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/16/Reverse-Linked-List-II/">Reverse Linked List II</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Reverse_Linked_List_II">Reverse Linked List II</h2><h3 id="题目">题目</h3><p>Reverse a linked list from position m to n. Do it in-place and in one-pass.</p>
+<p>For example:<br>Given 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, m = 2 and n = 4,</p>
+<p>return 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL.</p>
+<p><strong>Note:</strong></p>
+<p>Given m, n satisfy the following condition:<br>1 ≤ m ≤ n ≤ length of list. </p>
+<h3 id="思路">思路</h3><p>其实跟反转链表的思路是一样的，都采用头插法，只不过这里的头需要重新定义，还有插入次数的的限定n-m。</p>
+<h3 id="解题">解题</h3><p>c++版</p>
+<pre><code>/**
+ * Definition <span class="keyword">for</span> singly-linked list.
+ * struct ListNode {
+ *     <span class="built_in">int</span> val;
+ *     ListNode *<span class="keyword">next</span>;
+ *     ListNode(<span class="built_in">int</span> x) : val(x), <span class="keyword">next</span>(<span class="literal">NULL</span>) {}
+ * };
+ */
+<span class="keyword">class</span> Solution {
+<span class="keyword">public</span>:
+    ListNode* reverseBetween(ListNode* head, <span class="built_in">int</span> m, <span class="built_in">int</span> n) {
+        <span class="built_in">int</span> i;
+        ListNode dummy(-<span class="number">1</span>);
+        dummy.<span class="keyword">next</span>=head;
+        ListNode *dummy1=&amp;dummy;
+        <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;m;i++){
+            dummy1=dummy1-&gt;<span class="keyword">next</span>;
+        }
+        ListNode *pre,*cur;
+        pre=dummy1-&gt;<span class="keyword">next</span>;
+        cur=pre-&gt;<span class="keyword">next</span>;
+        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n-m;i++){
+            pre-&gt;<span class="keyword">next</span>=cur-&gt;<span class="keyword">next</span>;
+            cur-&gt;<span class="keyword">next</span>=dummy1-&gt;<span class="keyword">next</span>;
+            dummy1-&gt;<span class="keyword">next</span>=cur;
+            cur=pre-&gt;<span class="keyword">next</span>;
+        }
+        return dummy.<span class="keyword">next</span>;
+    }
+};
+</code></pre><p>Python版</p>
+<pre><code><span class="comment"># Definition for singly-linked list.</span>
+<span class="comment"># class ListNode:</span>
+<span class="comment">#     def __init__(self, x):</span>
+<span class="comment">#         self.val = x</span>
+<span class="comment">#         self.next = None</span>
+
+<span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span>
+    <span class="comment"># <span class="doctag">@param</span> head, a ListNode</span>
+    <span class="comment"># <span class="doctag">@param</span> m, an integer</span>
+    <span class="comment"># <span class="doctag">@param</span> n, an integer</span>
+    <span class="comment"># <span class="doctag">@return</span> a ListNode</span>
+    <span class="function"><span class="keyword">def</span> </span>reverseBetween(<span class="keyword">self</span>, head, m, n)<span class="symbol">:</span>
+        dummy=<span class="constant">ListNode</span>(-<span class="number">1</span>)
+        dummy.<span class="keyword">next</span>=head
+        prev=dummy
+        <span class="keyword">for</span> i <span class="keyword">in</span> range(m-<span class="number">1</span>)<span class="symbol">:</span>
+            prev=prev.<span class="keyword">next</span>
+        head2=prev
+        prev=head2.<span class="keyword">next</span>
+        cur=prev.<span class="keyword">next</span>
+        <span class="keyword">for</span> i <span class="keyword">in</span> range(n-m)<span class="symbol">:</span>
+            prev.<span class="keyword">next</span>=cur.<span class="keyword">next</span>
+            cur.<span class="keyword">next</span>=head2.<span class="keyword">next</span>
+            head2.<span class="keyword">next</span>=cur
+            cur=prev.<span class="keyword">next</span>
+        <span class="keyword">return</span> dummy.<span class="keyword">next</span>
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/06/16/Reverse-Linked-List-II/" data-id="ciaz57t3o0008cwoymf0hc6ux" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+ 
+  
     <article id="post-Reverse-Linked-List" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/06/16/Reverse-Linked-List/" class="article-date">
@@ -172,7 +276,7 @@ cur=pre-&gt;<span class="keyword">next</span>;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/16/Reverse-Linked-List/" data-id="ciaz4g8560006v4oyos44eqv0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/16/Reverse-Linked-List/" data-id="ciaz57t3k0006cwoys9r8uw2i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -273,7 +377,7 @@ cur=cur-&gt;next<span class="comment">;</span>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/16/Swap-Nodes-in-pairs/" data-id="ciaz4g8520004v4oy2ti469d3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/16/Swap-Nodes-in-pairs/" data-id="ciaz57t3g0004cwoye850ytgo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -374,7 +478,7 @@ public:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/16/Merge-Two-Sorted-Lists/" data-id="ciaz4g85f000av4oymwvkjjjk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/16/Merge-Two-Sorted-Lists/" data-id="ciaz57t3x000ccwoyml6uq0d0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -474,7 +578,7 @@ public:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/16/Remove-Nth-Node-From-End-of-List/" data-id="ciaz4g85a0008v4oyeba832rt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/16/Remove-Nth-Node-From-End-of-List/" data-id="ciaz57t3t000acwoy4yz1fmxa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -592,7 +696,7 @@ class Solution {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/16/Add-Two-Numbers/" data-id="ciaz4g82g0000v4oy7ssi8cy8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/16/Add-Two-Numbers/" data-id="ciaz57t1r0000cwoylu6pszf2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -628,7 +732,7 @@ class Solution {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/15/我开通博客啦/" data-id="ciaz4g84p0003v4oypa6cw9gk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/15/我开通博客啦/" data-id="ciaz57t340003cwoyhfe2ybtd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -647,7 +751,7 @@ class Solution {
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">5</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -660,7 +764,7 @@ class Solution {
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -670,6 +774,10 @@ class Solution {
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/06/16/Reverse-Linked-List-II/">Reverse Linked List II</a>
+          </li>
         
           <li>
             <a href="/2015/06/16/Reverse-Linked-List/">Reverse Linked List</a>
@@ -685,10 +793,6 @@ class Solution {
         
           <li>
             <a href="/2015/06/16/Remove-Nth-Node-From-End-of-List/">Remove Nth Node From End of List</a>
-          </li>
-        
-          <li>
-            <a href="/2015/06/16/Add-Two-Numbers/">Add Two Numbers</a>
           </li>
         
       </ul>
