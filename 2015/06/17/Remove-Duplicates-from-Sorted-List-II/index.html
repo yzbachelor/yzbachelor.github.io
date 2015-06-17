@@ -3,27 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Remove Duplicates from Sorted List | 忠奸人</title>
+  <title>Remove Duplicates from Sorted List II | 忠奸人</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Remove Duplicates from Sorted List题目Given a sorted linked list, delete all duplicates such that each element appear only once.
+  <meta name="description" content="Remove Duplicates from Sorted List II题目Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list.
 For example,
-Given 1-&amp;gt;1-&amp;gt;2, return 1-&amp;gt;2.
-Given 1-&amp;gt;1-&amp;gt;2-&amp;gt">
+Given 1-&amp;gt;2-&amp;gt;3-">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Remove Duplicates from Sorted List">
-<meta property="og:url" content="http://yoursite.com/2015/06/17/Remove-Duplicates-from-Sorted-List/index.html">
+<meta property="og:title" content="Remove Duplicates from Sorted List II">
+<meta property="og:url" content="http://yoursite.com/2015/06/17/Remove-Duplicates-from-Sorted-List-II/index.html">
 <meta property="og:site_name" content="忠奸人">
-<meta property="og:description" content="Remove Duplicates from Sorted List题目Given a sorted linked list, delete all duplicates such that each element appear only once.
+<meta property="og:description" content="Remove Duplicates from Sorted List II题目Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list.
 For example,
-Given 1-&amp;gt;1-&amp;gt;2, return 1-&amp;gt;2.
-Given 1-&amp;gt;1-&amp;gt;2-&amp;gt">
-<meta property="og:updated_time" content="2015-06-17T11:54:29.030Z">
+Given 1-&amp;gt;2-&amp;gt;3-">
+<meta property="og:updated_time" content="2015-06-17T12:24:01.614Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Remove Duplicates from Sorted List">
-<meta name="twitter:description" content="Remove Duplicates from Sorted List题目Given a sorted linked list, delete all duplicates such that each element appear only once.
+<meta name="twitter:title" content="Remove Duplicates from Sorted List II">
+<meta name="twitter:description" content="Remove Duplicates from Sorted List II题目Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list.
 For example,
-Given 1-&amp;gt;1-&amp;gt;2, return 1-&amp;gt;2.
-Given 1-&amp;gt;1-&amp;gt;2-&amp;gt">
+Given 1-&amp;gt;2-&amp;gt;3-">
   
     <link rel="alternative" href="/atom.xml" title="忠奸人" type="application/atom+xml">
   
@@ -69,10 +66,10 @@ Given 1-&amp;gt;1-&amp;gt;2-&amp;gt">
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Remove-Duplicates-from-Sorted-List" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Remove-Duplicates-from-Sorted-List-II" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/06/17/Remove-Duplicates-from-Sorted-List/" class="article-date">
-  <time datetime="2015-06-17T11:48:40.000Z" itemprop="datePublished">2015-06-17</time>
+    <a href="/2015/06/17/Remove-Duplicates-from-Sorted-List-II/" class="article-date">
+  <time datetime="2015-06-17T11:58:55.000Z" itemprop="datePublished">2015-06-17</time>
 </a>
     
   <div class="article-category">
@@ -87,7 +84,7 @@ Given 1-&amp;gt;1-&amp;gt;2-&amp;gt">
         
   
     <h1 class="article-title" itemprop="name">
-      Remove Duplicates from Sorted List
+      Remove Duplicates from Sorted List II
     </h1>
   
 
@@ -95,11 +92,14 @@ Given 1-&amp;gt;1-&amp;gt;2-&amp;gt">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Remove_Duplicates_from_Sorted_List">Remove Duplicates from Sorted List</h2><h3 id="题目">题目</h3><p>Given a sorted linked list, delete all duplicates such that each element appear only once.</p>
+        <h2 id="Remove_Duplicates_from_Sorted_List_II">Remove Duplicates from Sorted List II</h2><h3 id="题目">题目</h3><p>Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list.</p>
 <p>For example,</p>
-<p>Given 1-&gt;1-&gt;2, return 1-&gt;2.</p>
-<p>Given 1-&gt;1-&gt;2-&gt;3-&gt;3, return 1-&gt;2-&gt;3. </p>
-<h3 id="思路">思路</h3><p>cur表示当前结点，cur-&gt;next表示下一结点。若cur-&gt;val等于cur-&gt;next-&gt;val,则删除cur-&gt;next这一结点,按下述操作cur-&gt;next=cur-&gt;next-&gt;next。否则cur=cur-&gt;next。</p>
+<p>Given 1-&gt;2-&gt;3-&gt;3-&gt;4-&gt;4-&gt;5, return 1-&gt;2-&gt;5.</p>
+<p>Given 1-&gt;1-&gt;1-&gt;2-&gt;3, return 2-&gt;3. </p>
+<h3 id="思路">思路</h3><p>定义一个前结点p=&amp;dummy,然后分情况讨论cur和cur-&gt;next。</p>
+<p>1）若cur-&gt;next=NULL,则p-&gt;next=cur;p=p-&gt;next;cur=cur-&gt;next</p>
+<p>2）cur-&gt;next!=NULL,cur-&gt;next-&gt;val==cur-&gt;val,cur移动到不相等的位置。</p>
+<p>3）cur-&gt;next!=NULL,cur-&gt;next-&gt;val!=cur-&gt;val,操作如1）。</p>
 <h3 id="解题">解题</h3><p>c++版</p>
 <pre><code>/**
  * <span class="type">Definition</span> <span class="keyword">for</span> singly-linked <span class="built_in">list</span>.
@@ -112,19 +112,38 @@ Given 1-&amp;gt;1-&amp;gt;2-&amp;gt">
 <span class="keyword">class</span> <span class="type">Solution</span> {
 public:
     <span class="type">ListNode</span>* deleteDuplicates(<span class="type">ListNode</span>* head) {
-        <span class="keyword">if</span>(!head)
-            return <span class="type">NULL</span>;
-        <span class="type">ListNode</span> *cur=head;
-        <span class="keyword">while</span>(cur-&gt;next){
-            <span class="keyword">if</span>(cur-&gt;next-&gt;<span class="keyword">val</span>==cur-&gt;<span class="keyword">val</span>)
-                cur-&gt;next=cur-&gt;next-&gt;next;
-            <span class="keyword">else</span>
+        <span class="keyword">if</span>(!head || !head-&gt;next)
+            return head;
+        <span class="type">ListNode</span> dummy(-<span class="number">1</span>);
+        <span class="type">ListNode</span> *p=&amp;dummy;
+        <span class="type">ListNode</span> *cur=head,*q;
+        <span class="keyword">while</span>(cur){
+            <span class="keyword">if</span>(!cur-&gt;next){
+                p-&gt;next=cur;
+                p=p-&gt;next;
                 cur=cur-&gt;next;
+            }
+            <span class="keyword">else</span>{
+                <span class="keyword">if</span>(cur-&gt;next-&gt;<span class="keyword">val</span>==cur-&gt;<span class="keyword">val</span>){
+                    q=cur-&gt;next;
+                    <span class="keyword">while</span>(q <span class="keyword">and</span> q-&gt;<span class="keyword">val</span>==cur-&gt;<span class="keyword">val</span>){
+                        q=q-&gt;next;
+                    }
+                    cur=q;
+                }
+                <span class="keyword">else</span>{
+                    p-&gt;next=cur;
+                    p=p-&gt;next;
+                    cur=cur-&gt;next;
+                }
+            }
         }
-        return head;
+        p-&gt;next=<span class="type">NULL</span>;
+        return dummy.next;
+
     }
 };
-</code></pre><p>python版</p>
+</code></pre><p>Python版</p>
 <pre><code><span class="comment"># Definition for singly-linked list.</span>
 <span class="comment"># class ListNode:</span>
 <span class="comment">#     def __init__(self, x):</span>
@@ -132,23 +151,36 @@ public:
 <span class="comment">#         self.next = None</span>
 
 <span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span>
-    <span class="comment"># @param head, a ListNode</span>
-    <span class="comment"># @return a ListNode</span>
-    <span class="function"><span class="keyword">def</span> <span class="title">deleteDuplicates</span><span class="params">(self, head)</span>:</span>
-        dummy=ListNode(-<span class="number">1</span>)
-        dummy.next=head
-        cur=dummy.next
-        <span class="keyword">while</span> cur <span class="keyword">and</span> cur.next:
-            <span class="keyword">if</span> cur.val==cur.next.val:
-                cur.next=cur.next.next
-            <span class="keyword">else</span>:
-                cur=cur.next
-        <span class="keyword">return</span> dummy.next
+    <span class="comment"># <span class="doctag">@param</span> head, a ListNode</span>
+    <span class="comment"># <span class="doctag">@return</span> a ListNode</span>
+    <span class="function"><span class="keyword">def</span> </span>deleteDuplicates(<span class="keyword">self</span>, head)<span class="symbol">:</span>
+        dummy=<span class="constant">ListNode</span>(-<span class="number">1</span>)
+        <span class="keyword">if</span> <span class="keyword">not</span> head <span class="keyword">or</span> <span class="keyword">not</span> head.<span class="symbol">next:</span>
+            <span class="keyword">return</span> head
+        p=dummy
+        cur=head
+        <span class="keyword">while</span> <span class="symbol">cur:</span>
+            <span class="keyword">if</span> <span class="keyword">not</span> cur.<span class="symbol">next:</span>
+                p.<span class="keyword">next</span>=cur
+                p=p.<span class="keyword">next</span>
+                cur=cur.<span class="keyword">next</span>
+            <span class="symbol">else:</span>
+                <span class="keyword">if</span> cur.val!=cur.<span class="keyword">next</span>.<span class="symbol">val:</span>
+                    p.<span class="keyword">next</span>=cur
+                    p=p.<span class="keyword">next</span>
+                    cur=cur.<span class="keyword">next</span>
+                <span class="symbol">else:</span>
+                    q=cur.<span class="keyword">next</span>
+                    <span class="keyword">while</span> q <span class="keyword">and</span> q.val==cur.<span class="symbol">val:</span>
+                        q=q.<span class="keyword">next</span>
+                    cur=q
+        p.<span class="keyword">next</span>=<span class="constant">None</span>
+        <span class="keyword">return</span> dummy.<span class="keyword">next</span>
 </code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/17/Remove-Duplicates-from-Sorted-List/" data-id="cib0qdckr000edooy6lec44te" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/17/Remove-Duplicates-from-Sorted-List-II/" data-id="cib0qdckx000gdooyx9sxly3y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -157,19 +189,10 @@ public:
     
 <nav id="article-nav">
   
-    <a href="/2015/06/17/Remove-Duplicates-from-Sorted-List-II/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Remove Duplicates from Sorted List II
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/06/16/Reverse-Nodes-in-k-Group/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2015/06/17/Remove-Duplicates-from-Sorted-List/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Reverse Nodes in k-Group</div>
+      <div class="article-nav-title">Remove Duplicates from Sorted List</div>
     </a>
   
 </nav>
