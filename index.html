@@ -25,11 +25,11 @@
     <link rel="alternative" href="/atom.xml" title="忠奸人" type="application/atom+xml">
     
     
-    <link rel="icon" href="/img/favicon.ico">
+    <link rel="icon" href="/author.jpeg">
     
     
-    <link rel="apple-touch-icon" href="/img/jacman.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon" href="/img/author.jpeg">
+    <link rel="apple-touch-icon-precomposed" href="/img/author.jpeg">
     
     <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
@@ -75,1242 +75,217 @@
     <div id="container">
       <div id="main">
 
-   
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2015/06/17/Partition-List/" title="Partition List" itemprop="url">
+  
+    <h1 itemprop="name">Partition List</h1>
     
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
+     
+           <p itemprop="description" >Partition List题目Given a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal to x</p>
+        
     
-      <a href="/2015/06/17/Partition-List/" title="Partition List" itemprop="url">Partition List</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="yzbachelor" target="_blank" itemprop="author">yzbachelor</a>
-		
-  <p class="article-time">
-    <time datetime="2015-06-17T12:30:16.000Z" itemprop="datePublished"> 发表于 2015-06-17</time>
+    <time datetime="2015-06-17T12:30:16.000Z" itemprop="datePublished">2015-06-17</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2015/06/17/Remove-Duplicates-from-Sorted-List-II/" title="Remove Duplicates from Sorted List II" itemprop="url">
+  
+    <h1 itemprop="name">Remove Duplicates from Sorted List II</h1>
     
-  </p>
-</header>
-    <div class="article-content">
+     
+           <p itemprop="description" >Remove Duplicates from Sorted List II题目Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbe</p>
         
-        <h2 id="Partition_List">Partition List</h2><h3 id="题目">题目</h3><p>Given a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal to x.</p>
-<p>You should preserve the original relative order of the nodes in each of the two partitions.</p>
-<p>For example,</p>
-<p>Given 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;2 and x = 3,</p>
-<p>return 1-&gt;2-&gt;2-&gt;4-&gt;3-&gt;5.</p>
-<h3 id="思路">思路</h3><p>定义两个链表，可以命名为左链表和右链表，将小于x的结点加入左链表中，否则将结点加入右链表中，最后将两个链表串联起来就OK了。</p>
-<h3 id="解题">解题</h3><p>c++版</p>
-<pre><code>/**
- * Definition <span class="keyword">for</span> singly-linked list.
- * struct ListNode {
- *     <span class="built_in">int</span> val;
- *     ListNode *<span class="keyword">next</span>;
- *     ListNode(<span class="built_in">int</span> x) : val(x), <span class="keyword">next</span>(<span class="literal">NULL</span>) {}
- * };
- */
-<span class="keyword">class</span> Solution {
-<span class="keyword">public</span>:
-    ListNode* partition(ListNode* head, <span class="built_in">int</span> x) {
-        ListNode dummy1(-<span class="number">1</span>),dummy2(-<span class="number">1</span>);
-        ListNode *<span class="built_in">left</span>=&amp;dummy1,*<span class="built_in">right</span>=&amp;dummy2;
-        ListNode *left_cur=<span class="built_in">left</span>,*right_cur=<span class="built_in">right</span>;
-        ListNode *cur=head;
-        <span class="keyword">while</span>(cur){
-            <span class="keyword">if</span>(cur-&gt;val&lt;x){
-                left_cur-&gt;<span class="keyword">next</span>=cur;
-                left_cur=cur;
-                cur=cur-&gt;<span class="keyword">next</span>;
-            }
-            <span class="keyword">else</span>{
-                right_cur-&gt;<span class="keyword">next</span>=cur;
-                right_cur=cur;
-                cur=cur-&gt;<span class="keyword">next</span>;
-            }
-        }
-        left_cur-&gt;<span class="keyword">next</span>=<span class="built_in">right</span>-&gt;<span class="keyword">next</span>;
-        right_cur-&gt;<span class="keyword">next</span>=<span class="literal">NULL</span>;
-        return <span class="built_in">left</span>-&gt;<span class="keyword">next</span>;
-    }
-};
-</code></pre><p>python版</p>
-<pre><code><span class="comment"># Definition for singly-linked list.</span>
-<span class="comment"># class ListNode:</span>
-<span class="comment">#     def __init__(self, x):</span>
-<span class="comment">#         self.val = x</span>
-<span class="comment">#         self.next = None</span>
-
-<span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span>
-    <span class="comment"># @param head, a ListNode</span>
-    <span class="comment"># @param x, an integer</span>
-    <span class="comment"># @return a ListNode</span>
-    <span class="function"><span class="keyword">def</span> <span class="title">partition</span><span class="params">(self, head, x)</span>:</span>
-        left=ListNode(-<span class="number">1</span>)
-        right=ListNode(-<span class="number">1</span>)
-        left_cur=left
-        right_cur=right
-        cur=head
-        <span class="keyword">while</span> cur:
-            <span class="keyword">if</span> cur.val&lt;x:
-                left_cur.next=cur
-                left_cur=cur
-            <span class="keyword">else</span>:
-                right_cur.next=cur
-                right_cur=cur
-            cur=cur.next
-        left_cur.next=right.next
-        right_cur.next=<span class="keyword">None</span>
-        <span class="keyword">return</span> left.next
-</code></pre>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
     
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
+    <time datetime="2015-06-17T11:58:55.000Z" itemprop="datePublished">2015-06-17</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2015/06/17/Remove-Duplicates-from-Sorted-List/" title="Remove Duplicates from Sorted List" itemprop="url">
+  
+    <h1 itemprop="name">Remove Duplicates from Sorted List</h1>
     
-      <a href="/2015/06/17/Remove-Duplicates-from-Sorted-List-II/" title="Remove Duplicates from Sorted List II" itemprop="url">Remove Duplicates from Sorted List II</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="yzbachelor" target="_blank" itemprop="author">yzbachelor</a>
-		
-  <p class="article-time">
-    <time datetime="2015-06-17T11:58:55.000Z" itemprop="datePublished"> 发表于 2015-06-17</time>
+     
+           <p itemprop="description" >Remove Duplicates from Sorted List题目Given a sorted linked list, delete all duplicates such that each element appear only once.
+For example,
+</p>
+        
     
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Remove_Duplicates_from_Sorted_List_II">Remove Duplicates from Sorted List II</h2><h3 id="题目">题目</h3><p>Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list.</p>
-<p>For example,</p>
-<p>Given 1-&gt;2-&gt;3-&gt;3-&gt;4-&gt;4-&gt;5, return 1-&gt;2-&gt;5.</p>
-<p>Given 1-&gt;1-&gt;1-&gt;2-&gt;3, return 2-&gt;3. </p>
-<h3 id="思路">思路</h3><p>定义一个前结点p=&amp;dummy,然后分情况讨论cur和cur-&gt;next。</p>
-<p>1）若cur-&gt;next=NULL,则p-&gt;next=cur;p=p-&gt;next;cur=cur-&gt;next</p>
-<p>2）cur-&gt;next!=NULL,cur-&gt;next-&gt;val==cur-&gt;val,cur移动到不相等的位置。</p>
-<p>3）cur-&gt;next!=NULL,cur-&gt;next-&gt;val!=cur-&gt;val,操作如1）。</p>
-<h3 id="解题">解题</h3><p>c++版</p>
-<pre><code>/**
- * <span class="type">Definition</span> <span class="keyword">for</span> singly-linked <span class="built_in">list</span>.
- * <span class="keyword">struct</span> <span class="type">ListNode</span> {
- *     <span class="built_in">int</span> <span class="keyword">val</span>;
- *     <span class="type">ListNode</span> *next;
- *     <span class="type">ListNode</span>(<span class="built_in">int</span> x) : <span class="keyword">val</span>(x), next(<span class="type">NULL</span>) {}
- * };
- */
-<span class="keyword">class</span> <span class="type">Solution</span> {
-public:
-    <span class="type">ListNode</span>* deleteDuplicates(<span class="type">ListNode</span>* head) {
-        <span class="keyword">if</span>(!head || !head-&gt;next)
-            return head;
-        <span class="type">ListNode</span> dummy(-<span class="number">1</span>);
-        <span class="type">ListNode</span> *p=&amp;dummy;
-        <span class="type">ListNode</span> *cur=head,*q;
-        <span class="keyword">while</span>(cur){
-            <span class="keyword">if</span>(!cur-&gt;next){
-                p-&gt;next=cur;
-                p=p-&gt;next;
-                cur=cur-&gt;next;
-            }
-            <span class="keyword">else</span>{
-                <span class="keyword">if</span>(cur-&gt;next-&gt;<span class="keyword">val</span>==cur-&gt;<span class="keyword">val</span>){
-                    q=cur-&gt;next;
-                    <span class="keyword">while</span>(q <span class="keyword">and</span> q-&gt;<span class="keyword">val</span>==cur-&gt;<span class="keyword">val</span>){
-                        q=q-&gt;next;
-                    }
-                    cur=q;
-                }
-                <span class="keyword">else</span>{
-                    p-&gt;next=cur;
-                    p=p-&gt;next;
-                    cur=cur-&gt;next;
-                }
-            }
-        }
-        p-&gt;next=<span class="type">NULL</span>;
-        return dummy.next;
-
-    }
-};
-</code></pre><p>Python版</p>
-<pre><code><span class="comment"># Definition for singly-linked list.</span>
-<span class="comment"># class ListNode:</span>
-<span class="comment">#     def __init__(self, x):</span>
-<span class="comment">#         self.val = x</span>
-<span class="comment">#         self.next = None</span>
-
-<span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span>
-    <span class="comment"># <span class="doctag">@param</span> head, a ListNode</span>
-    <span class="comment"># <span class="doctag">@return</span> a ListNode</span>
-    <span class="function"><span class="keyword">def</span> </span>deleteDuplicates(<span class="keyword">self</span>, head)<span class="symbol">:</span>
-        dummy=<span class="constant">ListNode</span>(-<span class="number">1</span>)
-        <span class="keyword">if</span> <span class="keyword">not</span> head <span class="keyword">or</span> <span class="keyword">not</span> head.<span class="symbol">next:</span>
-            <span class="keyword">return</span> head
-        p=dummy
-        cur=head
-        <span class="keyword">while</span> <span class="symbol">cur:</span>
-            <span class="keyword">if</span> <span class="keyword">not</span> cur.<span class="symbol">next:</span>
-                p.<span class="keyword">next</span>=cur
-                p=p.<span class="keyword">next</span>
-                cur=cur.<span class="keyword">next</span>
-            <span class="symbol">else:</span>
-                <span class="keyword">if</span> cur.val!=cur.<span class="keyword">next</span>.<span class="symbol">val:</span>
-                    p.<span class="keyword">next</span>=cur
-                    p=p.<span class="keyword">next</span>
-                    cur=cur.<span class="keyword">next</span>
-                <span class="symbol">else:</span>
-                    q=cur.<span class="keyword">next</span>
-                    <span class="keyword">while</span> q <span class="keyword">and</span> q.val==cur.<span class="symbol">val:</span>
-                        q=q.<span class="keyword">next</span>
-                    cur=q
-        p.<span class="keyword">next</span>=<span class="constant">None</span>
-        <span class="keyword">return</span> dummy.<span class="keyword">next</span>
-</code></pre>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
+    <time datetime="2015-06-17T11:48:40.000Z" itemprop="datePublished">2015-06-17</time>
+  </a>
+</section>
 
 
 
 
 
 
-   
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2015/06/16/Reverse-Nodes-in-k-Group/" title="Reverse Nodes in k-Group" itemprop="url">
+  
+    <h1 itemprop="name">Reverse Nodes in k-Group</h1>
     
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
+     
+           <p itemprop="description" >Reverse Nodes in k-Group题目Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.
+If the number of</p>
+        
     
-      <a href="/2015/06/17/Remove-Duplicates-from-Sorted-List/" title="Remove Duplicates from Sorted List" itemprop="url">Remove Duplicates from Sorted List</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="yzbachelor" target="_blank" itemprop="author">yzbachelor</a>
-		
-  <p class="article-time">
-    <time datetime="2015-06-17T11:48:40.000Z" itemprop="datePublished"> 发表于 2015-06-17</time>
+    <time datetime="2015-06-16T09:55:56.000Z" itemprop="datePublished">2015-06-16</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2015/06/16/Reverse-Linked-List-II/" title="Reverse Linked List II" itemprop="url">
+  
+    <h1 itemprop="name">Reverse Linked List II</h1>
     
-  </p>
-</header>
-    <div class="article-content">
+     
+           <p itemprop="description" >Reverse Linked List II题目Reverse a linked list from position m to n. Do it in-place and in one-pass.
+For example:Given 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;g</p>
         
-        <h2 id="Remove_Duplicates_from_Sorted_List">Remove Duplicates from Sorted List</h2><h3 id="题目">题目</h3><p>Given a sorted linked list, delete all duplicates such that each element appear only once.</p>
-<p>For example,</p>
-<p>Given 1-&gt;1-&gt;2, return 1-&gt;2.</p>
-<p>Given 1-&gt;1-&gt;2-&gt;3-&gt;3, return 1-&gt;2-&gt;3. </p>
-<h3 id="思路">思路</h3><p>cur表示当前结点，cur-&gt;next表示下一结点。若cur-&gt;val等于cur-&gt;next-&gt;val,则删除cur-&gt;next这一结点,按下述操作cur-&gt;next=cur-&gt;next-&gt;next。否则cur=cur-&gt;next。</p>
-<h3 id="解题">解题</h3><p>c++版</p>
-<pre><code>/**
- * <span class="type">Definition</span> <span class="keyword">for</span> singly-linked <span class="built_in">list</span>.
- * <span class="keyword">struct</span> <span class="type">ListNode</span> {
- *     <span class="built_in">int</span> <span class="keyword">val</span>;
- *     <span class="type">ListNode</span> *next;
- *     <span class="type">ListNode</span>(<span class="built_in">int</span> x) : <span class="keyword">val</span>(x), next(<span class="type">NULL</span>) {}
- * };
- */
-<span class="keyword">class</span> <span class="type">Solution</span> {
-public:
-    <span class="type">ListNode</span>* deleteDuplicates(<span class="type">ListNode</span>* head) {
-        <span class="keyword">if</span>(!head)
-            return <span class="type">NULL</span>;
-        <span class="type">ListNode</span> *cur=head;
-        <span class="keyword">while</span>(cur-&gt;next){
-            <span class="keyword">if</span>(cur-&gt;next-&gt;<span class="keyword">val</span>==cur-&gt;<span class="keyword">val</span>)
-                cur-&gt;next=cur-&gt;next-&gt;next;
-            <span class="keyword">else</span>
-                cur=cur-&gt;next;
-        }
-        return head;
-    }
-};
-</code></pre><p>python版</p>
-<pre><code><span class="comment"># Definition for singly-linked list.</span>
-<span class="comment"># class ListNode:</span>
-<span class="comment">#     def __init__(self, x):</span>
-<span class="comment">#         self.val = x</span>
-<span class="comment">#         self.next = None</span>
-
-<span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span>
-    <span class="comment"># @param head, a ListNode</span>
-    <span class="comment"># @return a ListNode</span>
-    <span class="function"><span class="keyword">def</span> <span class="title">deleteDuplicates</span><span class="params">(self, head)</span>:</span>
-        dummy=ListNode(-<span class="number">1</span>)
-        dummy.next=head
-        cur=dummy.next
-        <span class="keyword">while</span> cur <span class="keyword">and</span> cur.next:
-            <span class="keyword">if</span> cur.val==cur.next.val:
-                cur.next=cur.next.next
-            <span class="keyword">else</span>:
-                cur=cur.next
-        <span class="keyword">return</span> dummy.next
-</code></pre>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
     
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
+    <time datetime="2015-06-16T09:28:59.000Z" itemprop="datePublished">2015-06-16</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2015/06/16/Reverse-Linked-List/" title="Reverse Linked List" itemprop="url">
+  
+    <h1 itemprop="name">Reverse Linked List</h1>
     
-      <a href="/2015/06/16/Reverse-Nodes-in-k-Group/" title="Reverse Nodes in k-Group" itemprop="url">Reverse Nodes in k-Group</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="yzbachelor" target="_blank" itemprop="author">yzbachelor</a>
-		
-  <p class="article-time">
-    <time datetime="2015-06-16T09:55:56.000Z" itemprop="datePublished"> 发表于 2015-06-16</time>
+     
+           <p itemprop="description" >Reverse Linked List题目Reverse a singly linked list.
+Hint:
+A linked list can be reversed either iteratively or recursively. Could you implemen</p>
+        
     
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Reverse_Nodes_in_k-Group">Reverse Nodes in k-Group</h2><h3 id="题目">题目</h3><p>Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.</p>
-<p>If the number of nodes is not a multiple of k then left-out nodes in the end should remain as it is.</p>
-<p>You may not alter the values in the nodes, only nodes itself may be changed.</p>
-<p>Only constant memory is allowed.</p>
-<p>For example,<br>Given this linked list: 1-&gt;2-&gt;3-&gt;4-&gt;5</p>
-<p>For k = 2, you should return: 2-&gt;1-&gt;4-&gt;3-&gt;5</p>
-<p>For k = 3, you should return: 3-&gt;2-&gt;1-&gt;4-&gt;5 </p>
-<h3 id="思路">思路</h3><p>截取k个数的链段，然后对该链段进行反转。链表反转采用头插法，需要指明头结点位置，判断插入是否终止的条件。头结点需要不断更新。</p>
-<h3 id="解题">解题</h3><p>c++版</p>
-<pre><code>/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     <span class="typename">int</span> val;
- *     ListNode *<span class="built_in">next</span>;
- *     ListNode(<span class="typename">int</span> x) : val(x), <span class="built_in">next</span>(NULL) {}
- * };
- */
-class Solution {
-public:
-    ListNode* reverseKGroup(ListNode* head, <span class="typename">int</span> k) {
-        ListNode dummy(-<span class="number">1</span>);
-        dummy.<span class="built_in">next</span>=head;
-        <span class="typename">int</span> <span class="built_in">count</span>=<span class="number">0</span>;
-        ListNode *pre,*<span class="built_in">cross</span>;
-        pre=&amp;dummy;
-        <span class="built_in">cross</span>=head;
-        <span class="keyword">while</span>(<span class="built_in">cross</span>){
-            <span class="built_in">count</span>++;
-            if(<span class="built_in">count</span>%k==<span class="number">0</span>){
-                pre=<span class="built_in">reverse</span>(pre,<span class="built_in">cross</span>-&gt;<span class="built_in">next</span>);
-                <span class="built_in">cross</span>=pre-&gt;<span class="built_in">next</span>;
-            }
-            else{
-                <span class="built_in">cross</span>=<span class="built_in">cross</span>-&gt;<span class="built_in">next</span>;
-            }
-        }
-        return dummy.<span class="built_in">next</span>;
-    }
-
-    ListNode* <span class="built_in">reverse</span>(ListNode* head, ListNode *next1){
-        ListNode *pre,*cur;
-        pre=head-&gt;<span class="built_in">next</span>;
-        cur=pre-&gt;<span class="built_in">next</span>;
-        <span class="keyword">while</span>(cur!=next1){
-            pre-&gt;<span class="built_in">next</span>=cur-&gt;<span class="built_in">next</span>;
-            cur-&gt;<span class="built_in">next</span>=head-&gt;<span class="built_in">next</span>;
-            head-&gt;<span class="built_in">next</span>=cur;
-            cur=pre-&gt;<span class="built_in">next</span>;
-        }
-        return pre;
-    }
-};
-</code></pre><p>Python 版</p>
-<pre><code><span class="comment"># Definition for singly-linked list.</span>
-<span class="comment"># class ListNode:</span>
-<span class="comment">#     def __init__(self, x):</span>
-<span class="comment">#         self.val = x</span>
-<span class="comment">#         self.next = None</span>
-
-<span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span>
-    <span class="comment"># @param head, a ListNode</span>
-    <span class="comment"># @param k, an integer</span>
-    <span class="comment"># @return a ListNode</span>
-    <span class="function"><span class="keyword">def</span> <span class="title">reverseKGroup</span><span class="params">(self, head, k)</span>:</span>
-        <span class="keyword">if</span> <span class="keyword">not</span> head <span class="keyword">or</span> k&lt;=<span class="number">1</span>:
-            <span class="keyword">return</span> head
-        dummy=ListNode(-<span class="number">1</span>)
-        dummy.next=head
-        pre=dummy
-        cross=head
-        count=<span class="number">0</span>
-        <span class="keyword">while</span> cross:
-            count+=<span class="number">1</span>
-            <span class="keyword">if</span>(count%k==<span class="number">0</span>):
-                pre=self.reverse(pre,cross.next)
-                cross=pre.next
-            <span class="keyword">else</span>:
-                cross=cross.next
-        <span class="keyword">return</span> dummy.next
-
-    <span class="function"><span class="keyword">def</span> <span class="title">reverse</span><span class="params">(self,head,next1)</span>:</span>
-        pre=head.next
-        cur=pre.next
-        <span class="keyword">while</span> cur!=next1:
-            pre.next=cur.next
-            cur.next=head.next
-            head.next=cur
-            cur=pre.next
-        <span class="keyword">return</span> pre
-</code></pre>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
+    <time datetime="2015-06-16T08:42:53.000Z" itemprop="datePublished">2015-06-16</time>
+  </a>
+</section>
 
 
 
 
 
 
-   
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2015/06/16/Swap-Nodes-in-pairs/" title="Swap Nodes in pairs" itemprop="url">
+  
+    <h1 itemprop="name">Swap Nodes in pairs</h1>
     
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
+     
+           <p itemprop="description" >Swap Nodes in pairs题目Given a linked list, swap every two adjacent nodes and return its head.
+For example,Given 1-&amp;gt;2-&amp;gt;3-&amp;gt;4, you shou</p>
+        
     
-      <a href="/2015/06/16/Reverse-Linked-List-II/" title="Reverse Linked List II" itemprop="url">Reverse Linked List II</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="yzbachelor" target="_blank" itemprop="author">yzbachelor</a>
-		
-  <p class="article-time">
-    <time datetime="2015-06-16T09:28:59.000Z" itemprop="datePublished"> 发表于 2015-06-16</time>
+    <time datetime="2015-06-16T08:18:57.000Z" itemprop="datePublished">2015-06-16</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2015/06/16/Merge-Two-Sorted-Lists/" title="Merge Two Sorted Lists" itemprop="url">
+  
+    <h1 itemprop="name">Merge Two Sorted Lists</h1>
     
-  </p>
-</header>
-    <div class="article-content">
+     
+           <p itemprop="description" >Merge Two Sorted Lists题目Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the node</p>
         
-        <h2 id="Reverse_Linked_List_II">Reverse Linked List II</h2><h3 id="题目">题目</h3><p>Reverse a linked list from position m to n. Do it in-place and in one-pass.</p>
-<p>For example:<br>Given 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, m = 2 and n = 4,</p>
-<p>return 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL.</p>
-<p><strong>Note:</strong></p>
-<p>Given m, n satisfy the following condition:<br>1 ≤ m ≤ n ≤ length of list. </p>
-<h3 id="思路">思路</h3><p>其实跟反转链表的思路是一样的，都采用头插法，只不过这里的头需要重新定义，还有插入次数的的限定n-m。</p>
-<h3 id="解题">解题</h3><p>c++版</p>
-<pre><code>/**
- * Definition <span class="keyword">for</span> singly-linked list.
- * struct ListNode {
- *     <span class="built_in">int</span> val;
- *     ListNode *<span class="keyword">next</span>;
- *     ListNode(<span class="built_in">int</span> x) : val(x), <span class="keyword">next</span>(<span class="literal">NULL</span>) {}
- * };
- */
-<span class="keyword">class</span> Solution {
-<span class="keyword">public</span>:
-    ListNode* reverseBetween(ListNode* head, <span class="built_in">int</span> m, <span class="built_in">int</span> n) {
-        <span class="built_in">int</span> i;
-        ListNode dummy(-<span class="number">1</span>);
-        dummy.<span class="keyword">next</span>=head;
-        ListNode *dummy1=&amp;dummy;
-        <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;m;i++){
-            dummy1=dummy1-&gt;<span class="keyword">next</span>;
-        }
-        ListNode *pre,*cur;
-        pre=dummy1-&gt;<span class="keyword">next</span>;
-        cur=pre-&gt;<span class="keyword">next</span>;
-        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n-m;i++){
-            pre-&gt;<span class="keyword">next</span>=cur-&gt;<span class="keyword">next</span>;
-            cur-&gt;<span class="keyword">next</span>=dummy1-&gt;<span class="keyword">next</span>;
-            dummy1-&gt;<span class="keyword">next</span>=cur;
-            cur=pre-&gt;<span class="keyword">next</span>;
-        }
-        return dummy.<span class="keyword">next</span>;
-    }
-};
-</code></pre><p>Python版</p>
-<pre><code><span class="comment"># Definition for singly-linked list.</span>
-<span class="comment"># class ListNode:</span>
-<span class="comment">#     def __init__(self, x):</span>
-<span class="comment">#         self.val = x</span>
-<span class="comment">#         self.next = None</span>
-
-<span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span>
-    <span class="comment"># <span class="doctag">@param</span> head, a ListNode</span>
-    <span class="comment"># <span class="doctag">@param</span> m, an integer</span>
-    <span class="comment"># <span class="doctag">@param</span> n, an integer</span>
-    <span class="comment"># <span class="doctag">@return</span> a ListNode</span>
-    <span class="function"><span class="keyword">def</span> </span>reverseBetween(<span class="keyword">self</span>, head, m, n)<span class="symbol">:</span>
-        dummy=<span class="constant">ListNode</span>(-<span class="number">1</span>)
-        dummy.<span class="keyword">next</span>=head
-        prev=dummy
-        <span class="keyword">for</span> i <span class="keyword">in</span> range(m-<span class="number">1</span>)<span class="symbol">:</span>
-            prev=prev.<span class="keyword">next</span>
-        head2=prev
-        prev=head2.<span class="keyword">next</span>
-        cur=prev.<span class="keyword">next</span>
-        <span class="keyword">for</span> i <span class="keyword">in</span> range(n-m)<span class="symbol">:</span>
-            prev.<span class="keyword">next</span>=cur.<span class="keyword">next</span>
-            cur.<span class="keyword">next</span>=head2.<span class="keyword">next</span>
-            head2.<span class="keyword">next</span>=cur
-            cur=prev.<span class="keyword">next</span>
-        <span class="keyword">return</span> dummy.<span class="keyword">next</span>
-</code></pre>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
     
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
+    <time datetime="2015-06-16T06:33:53.000Z" itemprop="datePublished">2015-06-16</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2015/06/16/Remove-Nth-Node-From-End-of-List/" title="Remove Nth Node From End of List" itemprop="url">
+  
+    <h1 itemprop="name">Remove Nth Node From End of List</h1>
     
-      <a href="/2015/06/16/Reverse-Linked-List/" title="Reverse Linked List" itemprop="url">Reverse Linked List</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="yzbachelor" target="_blank" itemprop="author">yzbachelor</a>
-		
-  <p class="article-time">
-    <time datetime="2015-06-16T08:42:53.000Z" itemprop="datePublished"> 发表于 2015-06-16</time>
+     
+           <p itemprop="description" >Remove Nth Node From End of List题目Given a linked list, remove the nth node from the end of list and return its head.
+For example,
+Given link</p>
+        
     
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Reverse_Linked_List">Reverse Linked List</h2><h3 id="题目">题目</h3><p>Reverse a singly linked list.</p>
-<p><strong>Hint:</strong></p>
-<p>A linked list can be reversed either iteratively or recursively. Could you implement both?</p>
-<h3 id="思路">思路</h3><p>头插法 cur和pre分别表示当前结点和当前结点的前一结点，dummy.next=head;按照如下操作，不断将当前结点插入到头结点处。</p>
-<pre><code>pre-&gt;<span class="keyword">next</span>=cur-&gt;<span class="keyword">next</span>;
-cur-&gt;<span class="keyword">next</span>=dummy-&gt;<span class="keyword">next</span>;
-dummy-&gt;<span class="keyword">next</span>=cur;
-cur=pre-&gt;<span class="keyword">next</span>;
-</code></pre><h3 id="解题">解题</h3><p>C++版</p>
-<pre><code>/**
- * Definition <span class="keyword">for</span> singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *<span class="keyword">next</span>;
- *     ListNode(int x) : val(x), <span class="keyword">next</span>(<span class="literal">NULL</span>) {}
- * };
- */
-<span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
-<span class="keyword">public</span>:
-    ListNode* reverseList(ListNode* head) {
-        ListNode dummy(-<span class="number">1</span>);
-        dummy.<span class="keyword">next</span>=head;
-        ListNode *pre,*cur;
-        <span class="keyword">if</span>(!head)
-            <span class="keyword">return</span> <span class="literal">NULL</span>;
-        pre=head;
-        cur=head-&gt;<span class="keyword">next</span>;
-        <span class="keyword">while</span>(cur){
-            pre-&gt;<span class="keyword">next</span>=cur-&gt;<span class="keyword">next</span>;
-            cur-&gt;<span class="keyword">next</span>=dummy.<span class="keyword">next</span>;
-            dummy.<span class="keyword">next</span>=cur;
-            cur=pre-&gt;<span class="keyword">next</span>;
-        }
-        <span class="keyword">return</span> dummy.<span class="keyword">next</span>;
-    }
-};
-</code></pre><p>Python 版</p>
-<pre><code><span class="comment"># Definition for singly-linked list.</span>
-<span class="comment"># class ListNode:</span>
-<span class="comment">#     def __init__(self, x):</span>
-<span class="comment">#         self.val = x</span>
-<span class="comment">#         self.next = None</span>
-
-<span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span>
-    <span class="comment"># <span class="doctag">@param</span> {ListNode} head</span>
-    <span class="comment"># <span class="doctag">@return</span> {ListNode}</span>
-    <span class="function"><span class="keyword">def</span> </span>reverseList(<span class="keyword">self</span>, head)<span class="symbol">:</span>
-        <span class="keyword">if</span> <span class="keyword">not</span> <span class="symbol">head:</span>
-            <span class="keyword">return</span> <span class="constant">None</span>
-        dummy=<span class="constant">ListNode</span>(<span class="number">0</span>)
-        dummy.<span class="keyword">next</span>=head
-        pre=head
-        cur=pre.<span class="keyword">next</span>
-        <span class="keyword">while</span>(cur)<span class="symbol">:</span>
-            pre.<span class="keyword">next</span>=cur.<span class="keyword">next</span>
-            cur.<span class="keyword">next</span>=dummy.<span class="keyword">next</span>
-            dummy.<span class="keyword">next</span>=cur
-            cur=pre.<span class="keyword">next</span>
-        <span class="keyword">return</span> dummy.<span class="keyword">next</span>
-</code></pre><p>递归版</p>
-<pre><code>/**
- * Definition <span class="keyword">for</span> singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *<span class="keyword">next</span>;
- *     ListNode(int x) : val(x), <span class="keyword">next</span>(<span class="literal">NULL</span>) {}
- * };
- */
-<span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
-<span class="keyword">public</span>:
-    ListNode* reverseList(ListNode* head) {
-        <span class="keyword">if</span>(!head)
-            <span class="keyword">return</span> <span class="literal">NULL</span>;
-        <span class="keyword">if</span>(!head-&gt;<span class="keyword">next</span>)
-            <span class="keyword">return</span> head;
-        ListNode *newHead=reverseList(head-&gt;<span class="keyword">next</span>);
-        head-&gt;<span class="keyword">next</span>-&gt;<span class="keyword">next</span>=head;
-        head-&gt;<span class="keyword">next</span>=<span class="literal">NULL</span>;
-        <span class="keyword">return</span> newHead;
-    }
-</code></pre><p>};</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
+    <time datetime="2015-06-16T05:54:03.000Z" itemprop="datePublished">2015-06-16</time>
+  </a>
+</section>
 
 
 
 
 
 
-   
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2015/06/16/Add-Two-Numbers/" title="Add Two Numbers" itemprop="url">
+  
+    <h1 itemprop="name">Add Two Numbers</h1>
     
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
+     
+           <p itemprop="description" >Add Two Number题目You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of the</p>
+        
     
-      <a href="/2015/06/16/Swap-Nodes-in-pairs/" title="Swap Nodes in pairs" itemprop="url">Swap Nodes in pairs</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="yzbachelor" target="_blank" itemprop="author">yzbachelor</a>
-		
-  <p class="article-time">
-    <time datetime="2015-06-16T08:18:57.000Z" itemprop="datePublished"> 发表于 2015-06-16</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Swap_Nodes_in_pairs">Swap Nodes in pairs</h2><h3 id="题目">题目</h3><p>Given a linked list, swap every two adjacent nodes and return its head.</p>
-<p>For example,<br>Given 1-&gt;2-&gt;3-&gt;4, you should return the list as 2-&gt;1-&gt;4-&gt;3.</p>
-<p>Your algorithm should use only constant space. You may not modify the values in the list, only nodes itself can be changed. </p>
-<h3 id="思路">思路</h3><p>cur和cur-&gt;next 分别表示需要交换的两个节点，pre表示交换的第一个节点的前一个节点。经过下述操作，就能达到交换的目的。顺序很重要。</p>
-<pre><code>pre-&gt;<span class="keyword">next</span>=cur-&gt;<span class="keyword">next</span>;
-cur-&gt;<span class="keyword">next</span>=cur-&gt;<span class="keyword">next</span>-&gt;<span class="keyword">next</span>;
-pre-&gt;<span class="keyword">next</span>-&gt;<span class="keyword">next</span>=cur;
-</code></pre><p>然后移动操作。</p>
-<pre><code>pre=cur<span class="comment">;</span>
-cur=cur-&gt;next<span class="comment">;</span>
-</code></pre><h3 id="解题">解题</h3><p>c++版</p>
-<pre><code>/**
- * Definition <span class="keyword">for</span> singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *<span class="keyword">next</span>;
- *     ListNode(int x) : val(x), <span class="keyword">next</span>(<span class="literal">NULL</span>) {}
- * };
- */
-<span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
-<span class="keyword">public</span>:
-    ListNode* swapPairs(ListNode* head) {
-        <span class="keyword">if</span>(!head)
-            <span class="keyword">return</span> <span class="literal">NULL</span>;
-        ListNode dummy(-<span class="number">1</span>);
-        dummy.<span class="keyword">next</span>=head;
-        ListNode *pre,*cur;
-        pre=&amp;dummy;
-        cur=head;
-        <span class="keyword">while</span>(cur <span class="literal">and</span> cur-&gt;<span class="keyword">next</span>){
-            pre-&gt;<span class="keyword">next</span>=cur-&gt;<span class="keyword">next</span>;
-            cur-&gt;<span class="keyword">next</span>=cur-&gt;<span class="keyword">next</span>-&gt;<span class="keyword">next</span>;
-            pre-&gt;<span class="keyword">next</span>-&gt;<span class="keyword">next</span>=cur;
-            pre=cur;
-            cur=cur-&gt;<span class="keyword">next</span>;
-        }
-        <span class="keyword">return</span> dummy.<span class="keyword">next</span>;
-    }
-};
-</code></pre><p>Python版</p>
-<pre><code><span class="comment"># Definition for singly-linked list.</span>
-<span class="comment"># class ListNode:</span>
-<span class="comment">#     def __init__(self, x):</span>
-<span class="comment">#         self.val = x</span>
-<span class="comment">#         self.next = None</span>
+    <time datetime="2015-06-16T04:08:32.000Z" itemprop="datePublished">2015-06-16</time>
+  </a>
+</section>
 
-<span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span>
-    <span class="comment"># <span class="doctag">@param</span> a ListNode</span>
-    <span class="comment"># <span class="doctag">@return</span> a ListNode</span>
-    <span class="function"><span class="keyword">def</span> </span>swapPairs(<span class="keyword">self</span>, head)<span class="symbol">:</span>
-        dummy=<span class="constant">ListNode</span>(-<span class="number">1</span>)
-        dummy.<span class="keyword">next</span>=head
-        pre=dummy
-        cur=pre.<span class="keyword">next</span>
-        <span class="keyword">while</span> cur <span class="keyword">and</span> cur.<span class="symbol">next:</span>
-            pre.<span class="keyword">next</span>=cur.<span class="keyword">next</span>
-            cur.<span class="keyword">next</span>=pre.<span class="keyword">next</span>.<span class="keyword">next</span>
-            pre.<span class="keyword">next</span>.<span class="keyword">next</span>=cur
-            pre=cur
-            cur=cur.<span class="keyword">next</span>
-        <span class="keyword">return</span> dummy.<span class="keyword">next</span>
-</code></pre>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
 
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-</div>
 
 
-</div>
 
 
 
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/06/16/Merge-Two-Sorted-Lists/" title="Merge Two Sorted Lists" itemprop="url">Merge Two Sorted Lists</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="yzbachelor" target="_blank" itemprop="author">yzbachelor</a>
-		
-  <p class="article-time">
-    <time datetime="2015-06-16T06:33:53.000Z" itemprop="datePublished"> 发表于 2015-06-16</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Merge_Two_Sorted_Lists">Merge Two Sorted Lists</h2><h3 id="题目">题目</h3><p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
-<h3 id="思路">思路</h3><p>类似于归并排序中的归并</p>
-<h3 id="解题">解题</h3><p>c++版</p>
-<pre><code>/**
- * <span class="type">Definition</span> <span class="keyword">for</span> singly-linked <span class="built_in">list</span>.
- * <span class="keyword">struct</span> <span class="type">ListNode</span> {
- *     <span class="built_in">int</span> <span class="keyword">val</span>;
- *     <span class="type">ListNode</span> *next;
- *     <span class="type">ListNode</span>(<span class="built_in">int</span> x) : <span class="keyword">val</span>(x), next(<span class="type">NULL</span>) {}
- * };
- */
-<span class="keyword">class</span> <span class="type">Solution</span> {
-public:
-    <span class="type">ListNode</span>* mergeTwoLists(<span class="type">ListNode</span>* l1, <span class="type">ListNode</span>* l2) {
-        <span class="type">ListNode</span> dummy(-<span class="number">1</span>);
-        <span class="type">ListNode</span> *cur=&amp;dummy;
-        <span class="keyword">while</span>(l1 <span class="keyword">and</span> l2){
-            <span class="keyword">if</span>(l1-&gt;<span class="keyword">val</span>&lt;l2-&gt;<span class="keyword">val</span>){
-                cur-&gt;next=l1;
-                l1=l1-&gt;next;
-            }
-            <span class="keyword">else</span>{
-                cur-&gt;next=l2;
-                l2=l2-&gt;next;
-            }
-            cur=cur-&gt;next;
-        }
-        <span class="keyword">if</span>(l1)
-            cur-&gt;next=l1;
-        <span class="keyword">if</span>(l2)
-            cur-&gt;next=l2;
-        return dummy.next;
-    }
-};
-</code></pre><p>Python版</p>
-<pre><code><span class="comment"># Definition for singly-linked list.</span>
-<span class="comment"># class ListNode:</span>
-<span class="comment">#     def __init__(self, x):</span>
-<span class="comment">#         self.val = x</span>
-<span class="comment">#         self.next = None</span>
-
-<span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span>
-    <span class="comment"># <span class="doctag">@param</span> {ListNode} l1</span>
-    <span class="comment"># <span class="doctag">@param</span> {ListNode} l2</span>
-    <span class="comment"># <span class="doctag">@return</span> {ListNode}</span>
-    <span class="function"><span class="keyword">def</span> </span>mergeTwoLists(<span class="keyword">self</span>, l1, l2)<span class="symbol">:</span>
-        dummy=<span class="constant">ListNode</span>(<span class="number">0</span>)
-        cur=dummy
-        <span class="keyword">while</span>(l1 <span class="keyword">and</span> l2)<span class="symbol">:</span>
-            <span class="keyword">if</span>(l1.val&lt;l2.val)<span class="symbol">:</span>
-                cur.<span class="keyword">next</span>=l1
-                l1=l1.<span class="keyword">next</span>
-            <span class="symbol">else:</span>
-                cur.<span class="keyword">next</span>=l2
-                l2=l2.<span class="keyword">next</span>
-            cur=cur.<span class="keyword">next</span>
-        <span class="keyword">if</span> <span class="symbol">l1:</span>
-            cur.<span class="keyword">next</span>=l1
-        <span class="keyword">if</span> <span class="symbol">l2:</span>
-            cur.<span class="keyword">next</span>=l2
-        <span class="keyword">return</span> dummy.<span class="keyword">next</span>
-</code></pre>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/06/16/Remove-Nth-Node-From-End-of-List/" title="Remove Nth Node From End of List" itemprop="url">Remove Nth Node From End of List</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="yzbachelor" target="_blank" itemprop="author">yzbachelor</a>
-		
-  <p class="article-time">
-    <time datetime="2015-06-16T05:54:03.000Z" itemprop="datePublished"> 发表于 2015-06-16</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Remove_Nth_Node_From_End_of_List">Remove Nth Node From End of List</h2><h3 id="题目">题目</h3><p>Given a linked list, remove the nth node from the end of list and return its head.</p>
-<p>For example,</p>
-<pre><code><span class="type">Given</span> linked <span class="built_in">list</span>: <span class="number">1</span>-&gt;<span class="number">2</span>-&gt;<span class="number">3</span>-&gt;<span class="number">4</span>-&gt;<span class="number">5</span>, <span class="keyword">and</span> n = <span class="number">2.</span>
-
-<span class="type">After</span> removing the second node from the <span class="keyword">end</span>, the linked <span class="built_in">list</span> becomes <span class="number">1</span>-&gt;<span class="number">2</span>-&gt;<span class="number">3</span>-&gt;<span class="number">5.</span>
-</code></pre><p><strong>Note:</strong></p>
-<p>Given n will always be valid.</p>
-<p>Try to do this in one pass. </p>
-<h3 id="思路">思路</h3><p>主要是要将指针指到链表从末尾向前数的第n+1个结点P，知道P结点，就能通过P-&gt;next=p-&gt;next-&gt;next。不过要注意一种特定情形，删除的节点刚好是首结点。可以通过定义头结点来解决。通过两个指针来解决，一个指针先行n+1步，然后再两个指针同时移步。</p>
-<h3 id="解题">解题</h3><p>c++版</p>
-<pre><code>/**
- * Definition <span class="keyword">for</span> singly-linked list.
- * struct ListNode {
- *     <span class="built_in">int</span> val;
- *     ListNode *<span class="keyword">next</span>;
- *     ListNode(<span class="built_in">int</span> x) : val(x), <span class="keyword">next</span>(<span class="literal">NULL</span>) {}
- * };
- */
-<span class="keyword">class</span> Solution {
-<span class="keyword">public</span>:
-    ListNode* removeNthFromEnd(ListNode* head, <span class="built_in">int</span> n) {
-        ListNode dummy(-<span class="number">1</span>);
-        dummy.<span class="keyword">next</span>=head;
-        ListNode *p,*q;
-        p=&amp;dummy;
-        q=&amp;dummy;
-        <span class="keyword">while</span>(n--)
-            p=p-&gt;<span class="keyword">next</span>;
-        p=p-&gt;<span class="keyword">next</span>;
-        <span class="keyword">while</span>(p <span class="keyword">and</span> q){
-            p=p-&gt;<span class="keyword">next</span>;
-            q=q-&gt;<span class="keyword">next</span>;
-        }
-        q-&gt;<span class="keyword">next</span>=q-&gt;<span class="keyword">next</span>-&gt;<span class="keyword">next</span>;
-        return dummy.<span class="keyword">next</span>;
-    }
-};
-</code></pre><p>python版</p>
-<pre><code><span class="comment"># Definition for singly-linked list.</span>
-<span class="comment"># class ListNode:</span>
-<span class="comment">#     def __init__(self, x):</span>
-<span class="comment">#         self.val = x</span>
-<span class="comment">#         self.next = None</span>
-
-<span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span>
-    <span class="comment"># <span class="doctag">@param</span> {ListNode} head</span>
-    <span class="comment"># <span class="doctag">@param</span> {integer} n</span>
-    <span class="comment"># <span class="doctag">@return</span> {ListNode}</span>
-    <span class="function"><span class="keyword">def</span> </span>removeNthFromEnd(<span class="keyword">self</span>, head, n)<span class="symbol">:</span>
-        dummy=<span class="constant">ListNode</span>(<span class="number">0</span>)
-        dummy.<span class="keyword">next</span>=head
-        p=dummy
-        q=dummy
-        <span class="keyword">for</span> i <span class="keyword">in</span> range(n+<span class="number">1</span>)<span class="symbol">:</span>
-            p=p.<span class="keyword">next</span>
-        <span class="keyword">while</span>(p <span class="keyword">and</span> q)<span class="symbol">:</span>
-            p=p.<span class="keyword">next</span>
-            q=q.<span class="keyword">next</span>
-        q.<span class="keyword">next</span>=q.<span class="keyword">next</span>.<span class="keyword">next</span>
-        <span class="keyword">return</span> dummy.<span class="keyword">next</span>
-</code></pre>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/06/16/Add-Two-Numbers/" title="Add Two Numbers" itemprop="url">Add Two Numbers</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="yzbachelor" target="_blank" itemprop="author">yzbachelor</a>
-		
-  <p class="article-time">
-    <time datetime="2015-06-16T04:08:32.000Z" itemprop="datePublished"> 发表于 2015-06-16</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Add_Two_Number">Add Two Number</h2><h3 id="题目">题目</h3><p>You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
-<p><strong>Input:</strong>(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)</p>
-<p><strong>Output:</strong>7 -&gt; 0 -&gt; 8</p>
-<h3 id="思路">思路</h3><p>两个链表l1和l2，设置一个新的链表来存储两个链表的和。从左往右进行运算，要设置一个进位flag。有四种情况：</p>
-<p>1）l1和l2都不为空，sum=l1.val+l2.val+flag,新的链表对应的位置等于sum%10,进位flag更新为sum/10</p>
-<p>2) l1不空，l2为空，sum=l1.val+flag,新的链表对应的位置等于sum%10,进位flag更新为sum/10</p>
-<p>3) l1为空，l2不空，sum=l2.val+flag,新的链表对应的位置等于sum%10,进位flag更新为sum/10</p>
-<p>4）l1和l2都为空,若flag为1，则新的链表末尾要新添一位。</p>
-<h3 id="解题">解题</h3><p>python版</p>
-<pre><code><span class="comment"># Definition for singly-linked list.</span>
-<span class="comment"># class ListNode:</span>
-<span class="comment">#     def __init__(self, x):</span>
-<span class="comment">#         self.val = x</span>
-<span class="comment">#         self.next = None</span>
-<span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span>
-    <span class="comment"># <span class="doctag">@return</span> a ListNode</span>
-    <span class="function"><span class="keyword">def</span> </span>addTwoNumbers(<span class="keyword">self</span>, l1, l2)<span class="symbol">:</span>
-        dummy=<span class="constant">ListNode</span>(<span class="number">0</span>)
-        flag=<span class="number">0</span>
-        p=dummy
-        <span class="keyword">while</span> l1 <span class="keyword">and</span> <span class="symbol">l2:</span>
-            sum=l1.val+l2.val+flag
-            p.<span class="keyword">next</span>=<span class="constant">ListNode</span>(sum%<span class="number">10</span>)
-            flag=sum/<span class="number">10</span>
-            l1=l1.<span class="keyword">next</span>;l2=l2.<span class="keyword">next</span>;p=p.<span class="keyword">next</span>
-        <span class="keyword">if</span> <span class="symbol">l1:</span>
-            <span class="keyword">while</span> <span class="symbol">l1:</span>
-                sum=l1.val+flag
-                p.<span class="keyword">next</span>=<span class="constant">ListNode</span>(sum%<span class="number">10</span>)
-                flag=sum/<span class="number">10</span>
-                l1=l1.<span class="keyword">next</span>;p=p.<span class="keyword">next</span>
-        <span class="keyword">if</span> <span class="symbol">l2:</span>
-            <span class="keyword">while</span> <span class="symbol">l2:</span>
-                sum=l2.val+flag
-                p.<span class="keyword">next</span>=<span class="constant">ListNode</span>(sum%<span class="number">10</span>)
-                flag=sum/<span class="number">10</span>
-                l2=l2.<span class="keyword">next</span>;p=p.<span class="keyword">next</span>
-        <span class="keyword">if</span> flag==<span class="number">1</span><span class="symbol">:</span>
-            p.<span class="keyword">next</span>=<span class="constant">ListNode</span>(<span class="number">1</span>)
-        <span class="keyword">return</span> dummy.<span class="keyword">next</span>
-</code></pre><p>C++版</p>
-<pre><code><span class="comment">/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */</span>
-class Solution {
-<span class="keyword">public</span>:
-    ListNode<span class="subst">*</span> addTwoNumbers(ListNode<span class="subst">*</span> l1, ListNode<span class="subst">*</span> l2) {
-        ListNode dummy(<span class="subst">-</span><span class="number">1</span>);
-        int <span class="keyword">sum</span>,flag<span class="subst">=</span><span class="number">0</span>;
-        ListNode <span class="subst">*</span>p<span class="subst">=&amp;</span>dummy;
-        <span class="keyword">while</span>(l1 <span class="literal">and</span> l2){
-            <span class="keyword">sum</span><span class="subst">=</span>l1<span class="subst">-&gt;</span>val<span class="subst">+</span>l2<span class="subst">-&gt;</span>val<span class="subst">+</span>flag;
-            p<span class="subst">-&gt;</span>next<span class="subst">=</span><span class="literal">new</span> ListNode(<span class="keyword">sum</span><span class="subst">%</span><span class="number">10</span>);
-            flag<span class="subst">=</span><span class="keyword">sum</span>/<span class="number">10</span>;
-            l1<span class="subst">=</span>l1<span class="subst">-&gt;</span>next;l2<span class="subst">=</span>l2<span class="subst">-&gt;</span>next;p<span class="subst">=</span>p<span class="subst">-&gt;</span>next;
-        }
-        <span class="keyword">while</span>(l1){
-            <span class="keyword">sum</span><span class="subst">=</span>l1<span class="subst">-&gt;</span>val<span class="subst">+</span>flag;
-            p<span class="subst">-&gt;</span>next<span class="subst">=</span><span class="literal">new</span> ListNode(<span class="keyword">sum</span><span class="subst">%</span><span class="number">10</span>);
-            flag<span class="subst">=</span><span class="keyword">sum</span>/<span class="number">10</span>;
-            l1<span class="subst">=</span>l1<span class="subst">-&gt;</span>next;p<span class="subst">=</span>p<span class="subst">-&gt;</span>next;
-        }
-        <span class="keyword">while</span>(l2){
-            <span class="keyword">sum</span><span class="subst">=</span>l2<span class="subst">-&gt;</span>val<span class="subst">+</span>flag;
-            p<span class="subst">-&gt;</span>next<span class="subst">=</span><span class="literal">new</span> ListNode(<span class="keyword">sum</span><span class="subst">%</span><span class="number">10</span>);
-            flag<span class="subst">=</span><span class="keyword">sum</span>/<span class="number">10</span>;
-            l2<span class="subst">=</span>l2<span class="subst">-&gt;</span>next;p<span class="subst">=</span>p<span class="subst">-&gt;</span>next;
-        }
-        <span class="keyword">if</span>(flag)
-            p<span class="subst">-&gt;</span>next<span class="subst">=</span><span class="literal">new</span> ListNode(<span class="number">1</span>);
-        <span class="keyword">return</span> dummy<span class="built_in">.</span>next;
-    }
-};
-</code></pre>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-
-  <nav id="page-nav" class="clearfix">
+  <nav id="page-nav" class="clearfix unexpand">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
   </nav>
 
@@ -1349,6 +324,12 @@ class Solution {
           <li>
             
             	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://quanru.github.io/" target="_blank" title="劝儒乡">劝儒乡</a>
             
           </li>
         
